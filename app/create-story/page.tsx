@@ -160,7 +160,7 @@ const createStory = () => {
 
   return (
     <>
-      <div className="min-h-screen">
+      <div className="min-h-screen mt-4">
         <div className="container mx-auto px-4 py-12 md:py-20">
           <div className="relative mb-12 text-center">
             <h1 className="text-4xl md:text-5xl font-extrabold text-purple-800 inline-block">

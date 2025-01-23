@@ -13,7 +13,7 @@ export default function DashboardHeader() {
     const {userDetail,setUserDetail} =useContext(UserDetailContext);
 
     return(
-    <div className='bg-primary text-white p-4 flex justify-between items-center'>
+    <div className='bg-primary text-white p-4 flex justify-between items-center mt-8'>
         <h2 className='font-bold text-xl lg:text-3xl md:text-2xl'>My Stories</h2>
         <div className='flex justify center items-center gap-1'>
             <span>{userDetail?.credit} coin(s) left</span>

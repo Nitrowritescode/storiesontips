@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export function Hero() {
   return (
-    <div className="relative overflow-hidden py-8 sm:py-12 w-full min-h-screen">
+    <div className="relative overflow-hidden py-8 sm:py-12 w-full min-h-screen mt-8">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-10 right-0 w-72 h-72 opacity-20">
@@ -54,7 +54,7 @@ export function Hero() {
               <Link href={"/create-story"}>
               <Button
                 size="lg"
-                className="bg-[#F4D5E3] text-pink-700 hover:bg-pink-200 px-8 h-12 text-lg font-semibold"
+                className=" text-slate-200 bg-primary hover:bg-pink-200 px-8 h-12 text-lg font-semibold"
                 endContent={<Sparkles className="w-5 h-5" />}
               >
                 Create Story
