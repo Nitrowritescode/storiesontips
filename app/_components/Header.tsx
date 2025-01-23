@@ -34,7 +34,7 @@ export function Header() {
           <SignedIn>
             <Link
               href="/dashboard"
-              className="text-white bg-purple-600 hover:bg-purple-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-2 hidden md:inline-flex items-center"
+              className="text-white bg-purple-600 hover:bg-purple-700 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-2 hidden md:inline-flex items-center"
             >
               <LayoutDashboard className="w-4 h-4 mr-2" />
               Dashboard
@@ -51,7 +51,7 @@ export function Header() {
           <SignedOut>
             <Link
               href="/sign-up"
-              className="text-white bg-purple-600 hover:bg-purple-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              className="text-white bg-purple-600 hover:bg-purple-700 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Get Started
             </Link>
@@ -88,7 +88,7 @@ export function Header() {
         >
           <ul className="flex flex-col p-4 md:p-0 font-medium border border-gray-100 rounded-lg bg-purple-500 md:space-x-8 rtl:space-x-reverse md:flex-row md:border-0 md:bg-transparent absolute left-0 right-0 top-full md:static md:mt-0">
             {navigationItems.map((item) => (
-              <li key={item.name}>
+              <li key={item.name} onClick={() => setIsMenuOpen(false)}>
                 <Link
                   href={item.href}
                   className="flex items-center py-2 px-3 text-white rounded hover:bg-purple-500 md:hover:bg-transparent md:hover:text-purple-300 md:p-0"
