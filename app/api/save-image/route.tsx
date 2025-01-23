@@ -1,7 +1,7 @@
 import { storage } from "@/config/firebaseConfig";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { NextRequest, NextResponse } from "next/server";
-import { convertImage } from "@/app/utils/convertImage";
+import { convertImage } from "@/utils/convertImage";
 
 export async function POST(req: NextRequest) {
   try {
