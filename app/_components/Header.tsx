@@ -12,8 +12,9 @@ import {
   NavbarMenuToggle,
 } from "@nextui-org/navbar";
 import { SignedIn, SignedOut, UserButton, useUser } from "@clerk/nextjs";
-import { Book, Contact, Home, LayoutDashboard, PenTool, Wand2 } from 'lucide-react';
+import { Book, Home, LayoutDashboard, PenTool } from 'lucide-react';
 import { useState } from "react";
+import Image from 'next/image';
 
 const navigationItems = [
   { name: "Home", href: "/", icon: Home },
@@ -42,8 +43,8 @@ export function Header() {
 
       <NavbarBrand>
         <Link href="/" className="flex items-center gap-2">
-          <div className="rounded-full bg-purple-600 p-2">
-            <Wand2 className="text-white w-6 h-6" />
+          <div className="pl-2 rounded-full">
+            <Image src={'/logo.png'} alt={'logo'} width={40} height={40} className="rounded-full"/>
           </div>
           <span className="font-bold text-xl text-white">
             StoriesOnTips
