@@ -1,115 +1,122 @@
 "use client"
 
-import { useState } from "react"
-import { SignedIn, SignedOut, UserButton, useUser } from "@clerk/nextjs"
-import { Book, Home, LayoutDashboard, PenTool, Wand2 } from "lucide-react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
+import { UserButton, SignedIn, SignedOut, useUser } from "@clerk/nextjs"
 
 const navigationItems = [
-  { name: "Home", href: "/", icon: Home },
-  { name: "Create Story", href: "/create-story", icon: PenTool },
-  { name: "Explore Stories", href: "/explore", icon: Book },
+  { name: "Home", href: "/" },
+  { name: "Create Story", href: "/create-story" },
+  { name: "Explore Stories", href: "/explore" },
 ]
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const { isSignedIn } = useUser()
+  const [mounted, setMounted] = useState(false)
+  const { isLoaded, isSignedIn } = useUser()
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted || !isLoaded) {
+    return null
   }
 
   return (
-    <nav className="bg-[#b28ed3] fixed w-full z-20 top-0 start-0">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2 px-4">
-        <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <div className="rounded-full bg-purple-600 p-2">
-            <Wand2 className="text-white w-6 h-6" />
+    <nav className="bg-purple-600 text-white">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="flex justify-between items-center">
+          <div className="flex space-x-4">
+            <div>
+              <Link href="/" className="flex items-center py-5 px-2 text-white">
+                <span className="font-bold text-xl">StoriesOnTips</span>
+              </Link>
+            </div>
+            <div className="hidden md:flex items-center space-x-1">
+              {navigationItems.map((item) => (
+                <Link key={item.name} href={item.href} className="py-5 px-3 text-white hover:text-purple-200">
+                  {item.name}
+                </Link>
+              ))}
+            </div>
           </div>
-          <span className="self-center text-xl font-semibold whitespace-nowrap text-white dark:text-white">
-            StoriesOnTips
-          </span>
-        </Link>
-        <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <SignedIn>
-            <Link
-              href="/dashboard"
-              className="text-white bg-purple-600 hover:bg-purple-700 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-2 hidden md:inline-flex items-center"
-            >
-              <LayoutDashboard className="w-4 h-4 mr-2" />
-              Dashboard
-            </Link>
-            <UserButton
-              appearance={{
-                elements: {
-                  avatarBox: "w-8 h-8",
-                },
-              }}
-              afterSignOutUrl="/"
-            />
-          </SignedIn>
-          <SignedOut>
-            <Link
-              href="/sign-up"
-              className="text-white bg-purple-600 hover:bg-purple-700 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Get Started
-            </Link>
-          </SignedOut>
-          <button
-            data-collapse-toggle="navbar-sticky"
-            type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-sticky"
-            aria-expanded={isMenuOpen}
-            onClick={toggleMenu}
-          >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              className="w-5 h-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 17 14"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M1 1h15M1 7h15M1 13h15"
-              />
-            </svg>
-          </button>
-        </div>
-        <div
-          className={`items-center justify-between ${isMenuOpen ? "block" : "hidden"} w-full md:flex md:w-auto md:order-1`}
-          id="navbar-sticky"
-        >
-          <ul className="flex flex-col p-4 md:p-0 font-medium border border-gray-100 rounded-lg bg-purple-500 md:space-x-8 rtl:space-x-reverse md:flex-row md:border-0 md:bg-transparent absolute left-0 right-0 top-full md:static md:mt-0">
-            {navigationItems.map((item) => (
-              <li key={item.name} onClick={() => setIsMenuOpen(false)}>
-                <Link
-                  href={item.href}
-                  className="flex items-center py-2 px-3 text-white rounded hover:bg-purple-500 md:hover:bg-transparent md:hover:text-purple-300 md:p-0"
-                >
-                  <item.icon className="w-4 h-4 mr-2 md:mr-0 md:hidden" />
-                  <span>{item.name}</span>
-                </Link>
-              </li>
-            ))}
+          <div className="hidden md:flex items-center space-x-4">
             <SignedIn>
-              <li className="md:hidden">
-                <Link
-                  href="/dashboard"
-                  className="flex items-center py-2 px-3 text-white rounded hover:bg-purple-500 md:hover:bg-transparent md:hover:text-purple-300 md:p-0"
-                >
-                  <span>Dashboard</span>
-                </Link>
-              </li>
+              <Link
+                href="/dashboard"
+                className="py-2 px-3 bg-purple-700 hover:bg-purple-800 text-white rounded transition duration-300"
+              >
+                Dashboard
+              </Link>
+              <UserButton
+                afterSignOutUrl="/"
+                appearance={{
+                  elements: {
+                    avatarBox: "w-10 h-10",
+                  },
+                }}
+              />
             </SignedIn>
-          </ul>
+            <SignedOut>
+              <Link
+                href="/sign-in"
+                className="py-2 px-3 bg-purple-700 hover:bg-purple-800 text-white rounded transition duration-300"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/sign-up"
+                className="py-2 px-3 bg-purple-700 hover:bg-purple-800 text-white rounded transition duration-300"
+              >
+                Sign Up
+              </Link>
+            </SignedOut>
+          </div>
+          <div className="md:hidden flex items-center">
+            <SignedIn>
+              <UserButton
+                afterSignOutUrl="/"
+                appearance={{
+                  elements: {
+                    avatarBox: "w-10 h-10 mr-2",
+                  },
+                }}
+              />
+            </SignedIn>
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="mobile-menu-button p-2">
+              <svg
+                className="w-6 h-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
         </div>
+      </div>
+      <div className={`mobile-menu ${isMenuOpen ? "" : "hidden"} md:hidden`}>
+        {navigationItems.map((item) => (
+          <Link key={item.name} href={item.href} className="block py-2 px-4 text-sm hover:bg-purple-700" onClick={() => setIsMenuOpen(false)}>
+            {item.name}
+          </Link>
+        ))}
+        <SignedIn>
+          <Link href="/dashboard" className="block py-2 px-4 text-sm hover:bg-purple-700">
+            Dashboard
+          </Link>
+        </SignedIn>
+        <SignedOut>
+          <Link href="/sign-in" className="block py-2 px-4 text-sm hover:bg-purple-700">
+            Sign In
+          </Link>
+          <Link href="/sign-up" className="block py-2 px-4 text-sm hover:bg-purple-700">
+            Sign Up
+          </Link>
+        </SignedOut>
       </div>
     </nav>
   )

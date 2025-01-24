@@ -73,7 +73,7 @@ export default function UserStoryList() {
 
           />
        <Button color='primary' className='p-8 mt-4'>
-        <Link href={'/create-story'} className='text-2xl'>Create Story</Link>
+        <Link href='/create-story' className='text-2xl'>Create Story</Link>
        </Button>
        <p className='text-primary text-xxl p-2 font-bold text-center'>Unleash Your Imagination!</p>
        </div>

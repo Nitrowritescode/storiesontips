@@ -18,7 +18,7 @@ export default function DashboardHeader() {
         <div className='flex justify center items-center gap-1'>
             <span>{userDetail?.credit} coin(s) left</span>
             <Image src="/coin.webp" alt="coin credits image" width={30} height={30} />
-           <Link href={'/buy-credits'}>
+           <Link href='/buy-credits'>
             <Button className='' color='secondary'>Buy More Coins</Button>
            </Link>
         </div>
