@@ -24,18 +24,18 @@ export function Header() {
   }
 
   return (
-    <nav className="bg-purple-600 text-white">
+    <nav className="bg-[#bb8fce] text-white">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center">
           <div className="flex space-x-4">
             <div>
               <Link href="/" className="flex items-center py-5 px-2 text-white">
-                <span className="font-bold text-xl">StoriesOnTips</span>
+                <span className="font-extrabold text-xl md:text-2xl lg:text-3xl text-primary">StoriesOnTips</span>
               </Link>
             </div>
             <div className="hidden md:flex items-center space-x-1">
               {navigationItems.map((item) => (
-                <Link key={item.name} href={item.href} className="py-5 px-3 text-white hover:text-purple-200">
+                <Link key={item.name} href={item.href} className="py-5 px-3 text-primary font-bold hover:text-purple-200">
                   {item.name}
                 </Link>
               ))}
@@ -50,7 +50,6 @@ export function Header() {
                 Dashboard
               </Link>
               <UserButton
-                afterSignOutUrl="/"
                 appearance={{
                   elements: {
                     avatarBox: "w-10 h-10",
@@ -76,7 +75,6 @@ export function Header() {
           <div className="md:hidden flex items-center">
             <SignedIn>
               <UserButton
-                afterSignOutUrl="/"
                 appearance={{
                   elements: {
                     avatarBox: "w-10 h-10 mr-2",

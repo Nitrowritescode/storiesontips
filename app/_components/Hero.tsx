@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export function Hero() {
   return (
-    <div className="relative overflow-hidden py-8 sm:py-12 w-full min-h-screen mt-8">
+    <div className="relative overflow-hidden py-8 sm:py-12 w-full min-h-screen bg-[#bb8fce]">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-10 right-0 w-72 h-72 opacity-20">

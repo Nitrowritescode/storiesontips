@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
-import { Baloo_2 } from "next/font/google";
+import { Comic_Neue } from "next/font/google";
 import "./globals.css";
 import Provider from "./provider";
 import { Header } from "./_components/Header";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadesOfPurple } from '@clerk/themes'
 
-const baloo = Baloo_2({ subsets: ["latin"] });
+const baloo = Comic_Neue({
+  subsets: ["latin"],
+  weight: "400"
+});
 
 export const metadata: Metadata = {
   title: "StoriesOnTips",
@@ -23,6 +26,9 @@ export default function RootLayout({
   appearance={{
     baseTheme: shadesOfPurple,
   }}
+  afterSignOutUrl={'/'}
+  signInFallbackRedirectUrl={'/'}
+  signUpFallbackRedirectUrl={'/'}
 >
    <html lang="en">
       <body className={`${baloo.className}`}>
