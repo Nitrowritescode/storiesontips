@@ -24,7 +24,7 @@ export function Header() {
   }
 
   return (
-    <nav className="bg-[#bb8fce] text-white">
+    <nav className="text-white">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center">
           <div className="flex space-x-4">
@@ -62,13 +62,13 @@ export function Header() {
                 href="/sign-in"
                 className="py-2 px-3 bg-purple-700 hover:bg-purple-800 text-white rounded transition duration-300"
               >
-                Sign In
+                Login
               </Link>
               <Link
                 href="/sign-up"
                 className="py-2 px-3 bg-purple-700 hover:bg-purple-800 text-white rounded transition duration-300"
               >
-                Sign Up
+                Get Started
               </Link>
             </SignedOut>
           </div>

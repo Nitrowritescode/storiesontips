@@ -35,12 +35,11 @@ function AgeGroup({userSelection}:any) {
  
    return (
      <div>
-        <label className='font-bold text-4xl text-primary mx-auto'>3. Age Group!</label>
-        <p className='text-primary'>Select the age group you are!</p>
+        <label className='font-bold text-4xl text-white mx-auto'>3. Age Group!</label>
+        <p className='text-white'>Select the age group you are!</p>
         <div className='grid grid-cols-3 gap-5 mt-3'>
-          {/* @ts-ignore */}
-         {OptionsList.map((item,_index)=>(
-             <div className={`relative grayscale hover:grayscale-0 cursor-pointer p-1 ${selectedOption==item.label?'grayscale-0 border rounded-3xl border-primary':'grayscale'}`} onClick={()=>OnUserSelect(item)}>
+         {OptionsList.map((item,index)=>(
+             <div key={item.label || index} className={`relative grayscale hover:grayscale-0 cursor-pointer p-1 ${selectedOption==item.label?'grayscale-0 border rounded-3xl border-primary':'grayscale'}`} onClick={()=>OnUserSelect(item)}>
                  <h2 className='absolute bottom-5 text-center text-white text-xl md:text-xl lg:text-2xl w-full'>{item.label}</h2>
              <Image src={item.imageUrl} alt={item.label} width={300} height={500} className='object-cover h-[260px] rounded-3xl'/>
              </div>

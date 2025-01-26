@@ -37,7 +37,7 @@ export default function StoryItemCard({story}:StoryItemType) {
             <p className="text-black text-xl">{story?.output?.bookTitle}</p>
            
           </div>
-          <Button className="text-tiny" color="primary" radius="full" size="sm">
+          <Button className="text-tiny bg-blue-600 font-bold"  radius="full" size="sm">
             Open
           </Button>
         </CardFooter>

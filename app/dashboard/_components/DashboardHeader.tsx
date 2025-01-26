@@ -13,13 +13,20 @@ export default function DashboardHeader() {
     const {userDetail,setUserDetail} =useContext(UserDetailContext);
 
     return(
-    <div className='bg-primary text-white p-4 flex justify-between items-center mt-8'>
+    <div className='bg-blue-950 text-white p-4 flex justify-between items-center mt-8'>
+        <div>
+
         <h2 className='font-bold text-xl lg:text-3xl md:text-2xl'>My Stories</h2>
+            <div className='flex justify-center items-center gap-1'>
+
+            <span>{userDetail?.credit} coins left</span>
+            <Image src="/coin.webp" alt="coin credits image" width={20} height={20} />
+            </div>
+        </div>
+
         <div className='flex justify center items-center gap-1'>
-            <span>{userDetail?.credit} coin(s) left</span>
-            <Image src="/coin.webp" alt="coin credits image" width={30} height={30} />
            <Link href='/buy-credits'>
-            <Button className='' color='secondary'>Buy More Coins</Button>
+            <Button className='bg-blue-600 text-white' type='button'>Buy More Coins</Button>
            </Link>
         </div>
     </div>

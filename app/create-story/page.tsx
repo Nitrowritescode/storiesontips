@@ -5,7 +5,6 @@ import StorySubjectInput from "./_components/StorySubjectInput";
 import StoryType from "./_components/StoryType";
 import AgeGroup from "./_components/AgeGroup";
 import ImageStyle from "./_components/ImageStyle";
-import {Header} from "../_components/Header";
 import { Button } from "@nextui-org/button";
 import { chatSession } from "@/config/GeminiAi";
 import { StoryData, Users } from "@/config/schema";
@@ -163,13 +162,13 @@ const createStory = () => {
       <div className="min-h-screen mt-4">
         <div className="container mx-auto px-4 py-12 md:py-20">
           <div className="relative mb-12 text-center">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-purple-800 inline-block">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white inline-block">
               CREATE YOUR STORY
             </h1>
             <div className="absolute -top-6 -left-6 w-12 h-12 bg-yellow-300 rounded-full opacity-50 animate-pulse"></div>
             <div className="absolute -bottom-6 -right-6 w-12 h-12 bg-pink-300 rounded-full opacity-50 animate-pulse"></div>
           </div>
-          <p className="text-lg text-purple-600 text-center mt-4 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg text-white text-center mt-4 mb-10 max-w-2xl mx-auto">
             Unlock your creativity with AI: Craft stories like never before! Let
             our AI bring your imagination to life, one story at a time.
           </p>
@@ -181,14 +180,13 @@ const createStory = () => {
           </div>
           <div className="flex-col flex justify-end my-10 ">
             <Button
-              color="primary"
-              className="p-6 text-2xl w-full md:w-[80%] mx-auto"
+              className="p-6 text-2xl w-full md:w-[80%] mx-auto font-bold bg-white"
               disabled={loading}
               onPress={GenerateStory}
             >
               Generate story
             </Button>
-            <span className="text-primary mx-auto text-xl font-bold">1 coin will be used!</span>
+            <span className="text-white mx-auto text-m font-bold">1 coin will be used!</span>
           </div>
         </div>
         <CustomLoader isLoading={loading} />

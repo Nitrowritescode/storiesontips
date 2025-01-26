@@ -16,22 +16,22 @@ export default function BuyCredits() {
         {
             id: 1,
             price: 3.99,
-            credits: 5
+            credits: 3
         },
         {
             id: 2,
             price: 4.99,
-            credits: 10
+            credits: 7
         },
         {
             id: 3,
-            price: 7.99,
-            credits: 18
+            price: 8.99,
+            credits: 12
         },
         {
             id: 4,
             price: 9.99,
-            credits: 30
+            credits: 16
         },
 
     ]
@@ -72,13 +72,13 @@ export default function BuyCredits() {
      
     return (
         <div className='min-h-screen p-10 md:px-20 lg:px-40 text-primary'>
-            <h2 className='text-3xl font-bold'>Add More Coins</h2>
+            <h2 className='text-3xl font-bold text-white'>Add More Coins</h2>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-10 items-center justify-center'>
             <div>
                 {/* @ts-ignore */}
                 {Options.map((option,_index)=>(
-                    <div className={`my-3 p-4 border bg-primary text-center rounded-xl cursor-pointer hover:scale-105 
-                        ${selectedOption==option.id&&"bg-[#0e113d]"}`}
+                    <div key={option.id} className={`my-3 p-4 border text-center rounded-xl cursor-pointer hover:scale-105 
+                        ${ selectedOption === option.id ? "bg-[#000000] !important" : "bg-blue-950"}`}
                     onClick={()=>setSelectedOption(option.id)}>
                         <h2 className='text-white'>Get {option.credits} Coins = {option.credits} stories</h2>
                         <h2 className='font-bold text-2xl text-white'>${option.price}</h2>
@@ -110,6 +110,7 @@ export default function BuyCredits() {
               />}
             </div>
         </div>
+        
 
         </div>
     )

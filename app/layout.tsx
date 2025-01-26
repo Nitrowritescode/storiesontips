@@ -5,6 +5,7 @@ import Provider from "./provider";
 import { Header } from "./_components/Header";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadesOfPurple } from '@clerk/themes'
+import { Background } from "./_components/background";
 
 const baloo = Comic_Neue({
   subsets: ["latin"],
@@ -26,12 +27,13 @@ export default function RootLayout({
   appearance={{
     baseTheme: shadesOfPurple,
   }}
-  afterSignOutUrl={'/'}
-  signInFallbackRedirectUrl={'/'}
-  signUpFallbackRedirectUrl={'/'}
+  afterSignOutUrl='/'
+  signInFallbackRedirectUrl='/dashboard'
+  signUpFallbackRedirectUrl='/dashboard'
 >
    <html lang="en">
       <body className={`${baloo.className}`}>
+      <Background />
         <Provider>
           <Header />
           {children}
