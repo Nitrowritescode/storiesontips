@@ -30,7 +30,7 @@ function StoryPages({storyChapter}:any) {
         <span className='text-3xl cursor-pointer text-gray-800' onClick={()=>stopSpeech()}><ImStop2 /></span>
         </div>
       </h2>
-      <p className='text-l md:text-xl lg:text-xl p-4 mt-3 rounded-lg bg-slate-100'>{storyChapter?.storyText}</p>
+      <p className='text-l md:text-xl lg:text-xl p-2 mt-3 rounded-lg bg-slate-100'>{storyChapter?.storyText}</p>
     </div>
   )
 }
