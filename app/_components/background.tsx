@@ -1,27 +1,39 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useEffect, useState, useCallback } from "react"
+import { motion, useAnimation } from "framer-motion"
 
 export function Background() {
+  const [isMounted, setIsMounted] = useState(false)
+  const controls = useAnimation()
+
+  const animateBackground = useCallback(() => {
+    controls.start({
+      opacity: [0.05, 0.2, 0.05],
+      scale: [1, 1.1, 1],
+      transition: { duration: 10, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" },
+    })
+  }, [controls])
+
+  useEffect(() => {
+    setIsMounted(true)
+    animateBackground()
+  }, [animateBackground])
+
+  if (!isMounted) return null
+
   return (
-    <div className="fixed inset-0 -z-10">
+    <div className="fixed inset-0 -z-10 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900" />
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-background/10 via-purple-500/5 to-background/10" />
-
-      {/* Animated background elements */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 0.1, scale: 1 }}
-        transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-gradient-to-tr from-purple-500/30 to-pink-500/30 blur-3xl"
+      <div
+        className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02] mix-blend-overlay"
+        style={{ backgroundRepeat: "repeat", backgroundSize: "100px 100px" }}
       />
+
       <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 0.1, scale: 1 }}
-        transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse", delay: 1 }}
-        className="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-gradient-to-tr from-blue-500/30 to-purple-500/30 blur-3xl"
+        animate={controls}
+        className="absolute -left-1/4 -top-1/4 h-[150%] w-[150%] rounded-[40%] bg-gradient-to-tr from-purple-500/20 to-pink-500/20 blur-3xl"
       />
     </div>
   )
