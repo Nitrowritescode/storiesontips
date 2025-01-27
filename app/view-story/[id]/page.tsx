@@ -27,8 +27,8 @@ function ViewStory({ params }: any) {
   const { width, height } = useWindowSize()
 
   // Calculate book dimensions based on screen size
-  const bookWidth = Math.min(500, width * 0.5)
-  const bookHeight = Math.min(700, height * 0.8)
+  const bookWidth = Math.min(500, width * 0.7)
+  const bookHeight = Math.min(700, height * 0.5)
 
   useEffect(() => {
     getStory();
