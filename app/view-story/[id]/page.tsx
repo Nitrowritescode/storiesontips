@@ -10,6 +10,7 @@ import StoryPages from "../_components/StoryPages";
 import { BsArrowLeftSquareFill, BsArrowRightSquareFill } from "react-icons/bs";
 import LastPage from "../_components/LastPage";
 import { use } from "react";
+import { useWindowSize } from "@/utils/useWindowSize"
 
 // interface ViewStoryProps {
 //   params: {
@@ -23,6 +24,11 @@ function ViewStory({ params }: any) {
   const [isLoading, setIsLoading] = useState(true);
   const bookRef = useRef<any>(null);
   const [count, setCount] = useState(0);
+  const { width, height } = useWindowSize()
+
+  // Calculate book dimensions based on screen size
+  const bookWidth = Math.min(500, width * 0.35)
+  const bookHeight = Math.min(700, height * 0.8)
 
   useEffect(() => {
     getStory();
@@ -55,18 +61,18 @@ function ViewStory({ params }: any) {
   }
 
   return (
-    <div className="p-10 md:px-20 lg:px-40 flex-col mx-auto min-h-screen mt-8">
+    <div className="md:px-20 lg:px-40 flex-col md:mx-auto lg:mx-auto min-h-screen mt-4">
       <h2 className="font-bold text-4xl text-center p-4 bg-primary text-white">
         {story.output?.bookTitle}
       </h2>
 
-      <div className="relative mx-auto">
+      <div className="relative mx-auto m-0">
         {/* @ts-ignore */}
         <HTMLFlipBook
-          width={500}
-          height={500}
+         width={bookWidth}
+         height={bookHeight}
           showCover={true}
-          className="mt-10 mx-auto"
+          className="mt-4 md:mt-0 lg:mt-0" 
           useMouseEvents={false}
           ref={bookRef}
         >
@@ -90,22 +96,22 @@ function ViewStory({ params }: any) {
 
         {/* Navigation Buttons */}
         {count!=0 && <div
-          className="absolute -left-10 top-[250px]"
+          className="absolute md:-left-10 lg:-left-10 top-[250px]"
           onClick={() => {
             bookRef.current?.pageFlip()?.flipPrev();
             setCount(count - 1);
           }}
         >
-          <BsArrowLeftSquareFill className="text-[40px] text-primary cursor-pointer" />
+          <BsArrowLeftSquareFill className="text-[40px] text-blue-600 cursor-pointer" />
         </div>}
-      {count!=(story.output?.chapters?.length+1) && <div
-          className="absolute -right-10 top-[250px]"
+      {count!=(story.output?.chapters?.length+2) && <div
+          className="absolute -right-1 md:-right-10 lg:-right-10 top-[250px]"
           onClick={() => {
             bookRef.current?.pageFlip()?.flipNext();
             setCount(count + 1);
           }}
         >
-          <BsArrowRightSquareFill className="text-[40px] text-primary cursor-pointer" />
+          <BsArrowRightSquareFill className="text-[40px] text-blue-600 cursor-pointer" />
         </div>}
       </div>
     </div>
