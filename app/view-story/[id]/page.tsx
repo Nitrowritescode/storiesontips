@@ -105,7 +105,7 @@ function ViewStory({ params }: any) {
             setCount(count + 1);
           }}
         >
-          <BsArrowRightSquareFill className="text-[40px] text-primary cursor-pointer" />
+          <BsArrowRightSquareFill className="text-[40px] text-white cursor-pointer" />
         </div>}
       </div>
     </div>

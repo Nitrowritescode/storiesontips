@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { UserDetailContext } from '@/app/_context/UserDetailContext';
 import { Button } from '@nextui-org/button';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 
 export default function DashboardHeader() {
