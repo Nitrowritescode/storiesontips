@@ -11,7 +11,7 @@ function StoryPages({storyChapter}:any) {
     const synth = window?.speechSynthesis;
     const textToSpeech = new SpeechSynthesisUtterance(text);
     const voices = synth.getVoices();
-    const voice = voices.find(voice => voice.name === 'Google UK English Female') || voices.find(voice => voice.name === 'Google UK English Male') || null;
+    const voice = voices.find(voice => voice.name === 'en-US-Journey-F') || voices.find(voice => voice.name === 'Google UK English Female') || voices.find(voice => voice.name === 'Google UK English Male') || null;
     textToSpeech.voice = voice;
     synth.speak(textToSpeech);
   }
@@ -23,14 +23,14 @@ function StoryPages({storyChapter}:any) {
 
   return (
     <div>
-      <h2 className='text-2xl font-bold text-primary flex justify-between'>{storyChapter?.chapterTitle}
+      <h2 className='text-xl md:text-2xl lg:text-2xl font-bold text-blue-600 flex justify-between'>{storyChapter?.chapterTitle}
         <div className='flex justify-center'>
 
-        <span className='text-3xl cursor-pointer flex-right' onClick={()=>playSpeech(storyChapter?.storyText)}><MdSmartDisplay /></span>
-        <span className='text-3xl cursor-pointer' onClick={()=>stopSpeech()}><ImStop2 /></span>
+        <span className='text-3xl cursor-pointer flex-right text-gray-800' onClick={()=>playSpeech(storyChapter?.storyText)}><MdSmartDisplay /></span>
+        <span className='text-3xl cursor-pointer text-gray-800' onClick={()=>stopSpeech()}><ImStop2 /></span>
         </div>
       </h2>
-      <p className='text-xl p-10 mt-3 rounded-lg bg-slate-100'>{storyChapter?.storyText}</p>
+      <p className='text-l md:text-xl lg:text-xl p-4 mt-3 rounded-lg bg-slate-100'>{storyChapter?.storyText}</p>
     </div>
   )
 }

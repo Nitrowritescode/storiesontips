@@ -6,8 +6,14 @@ import { Sparkles, Wand2 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@nextui-org/button"
+import { useRouter } from "next/navigation"
+
 
 export function Hero() {
+
+   
+  const router = useRouter();
+
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
@@ -34,11 +40,12 @@ export function Hero() {
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
-              <Link href="/create-story">
+              <Link href="/create-story" passHref>
                 <Button
                   size="lg"
                   className="bg-white h-12 px-8 text-lg font-semibold"
                   endContent={<Sparkles className="ml-2 h-5 w-5" />}
+                  onPress={() => router.push('/create-story')}
                 >
                   Create Story
                 </Button>
