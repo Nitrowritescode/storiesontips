@@ -11,6 +11,9 @@ import { toast } from 'react-toastify';
 import { Button } from '@nextui-org/button';
 import Link from 'next/link';
 import Image from "next/image"
+import { useRouter } from 'next/router';
+
+
 
 
 export type StoryItemType = {
@@ -34,6 +37,7 @@ export default function UserStoryList() {
     const { user } = useUser()
     const [storyList, setStoryList] = useState<StoryItemType[]>();
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
         user && getUserStory();
@@ -72,8 +76,8 @@ export default function UserStoryList() {
                             height={400}
 
                         />
-                        <Link href='/create-story' className='text-2xl'>
-                            <Button  className=' bg-white p-8 mt-4' type='button'>
+                        <Link href='/create-story' className='text-2xl' passHref>
+                            <Button  className=' bg-white p-8 mt-4' type='button' onPress={() => router.push('/create-story')}>
                                 Create Story
                             </Button>
                         </Link>
