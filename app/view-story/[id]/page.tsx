@@ -27,8 +27,8 @@ function ViewStory({ params }: any) {
   const { width, height } = useWindowSize()
 
   // Calculate book dimensions based on screen size
-  const bookWidth = Math.min(500, width * 0.7)
-  const bookHeight = Math.min(700, height * 0.5)
+  const bookWidth = Math.min(500, width * 0.4)
+  const bookHeight = Math.min(700, height * 0.6)
 
   useEffect(() => {
     getStory();
@@ -72,7 +72,7 @@ function ViewStory({ params }: any) {
          width={bookWidth}
          height={bookHeight}
           showCover={true}
-          className="mt-4 md:mt-0 lg:mt-0" 
+          className="mt-4 md:mt-0 lg:mt-0 mx-auto" 
           useMouseEvents={false}
           ref={bookRef}
         >
