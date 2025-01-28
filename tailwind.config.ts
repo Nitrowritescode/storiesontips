@@ -10,6 +10,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        fancy: `
+          radial-gradient(circle at top left, rgba(88,28,135,0.15), transparent 50%),
+          radial-gradient(circle at top right, rgba(192,132,252,0.1), transparent 50%),
+          linear-gradient(
+            to bottom right,
+            rgb(10,10,18),
+            rgb(46,16,74),
+            rgb(88,28,135),
+            rgb(46,16,74),
+            rgb(10,10,18)
+          )
+        `,
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

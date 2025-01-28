@@ -1,7 +1,17 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
+import React from "react"
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
+  Link,
+  Button,
+} from "@nextui-org/react"
 import { UserButton, SignedIn, SignedOut, useUser } from "@clerk/nextjs"
 
 const navigationItems = [
@@ -11,112 +21,104 @@ const navigationItems = [
 ]
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false)
   const { isLoaded, isSignedIn } = useUser()
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  const closeMenu = () => {
+    setIsMenuOpen(false)
+  }
 
-  if (!mounted || !isLoaded) {
+  if (!isLoaded) {
     return null
   }
 
   return (
-    <nav className="text-white">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex justify-between items-center">
-          <div className="flex space-x-4">
-            <div>
-              <Link href="/" className="flex items-center py-5 px-2 text-white">
-                <span className="font-extrabold text-xl md:text-2xl lg:text-3xl text-primary">StoriesOnTips</span>
-              </Link>
-            </div>
-            <div className="hidden md:flex items-center space-x-1">
-              {navigationItems.map((item) => (
-                <Link key={item.name} href={item.href} className="py-5 px-3 text-primary font-bold hover:text-purple-200">
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="hidden md:flex items-center space-x-4">
-            <SignedIn>
-              <Link
-                href="/dashboard"
-                className="py-2 px-3 bg-purple-700 hover:bg-purple-800 text-white rounded transition duration-300"
-              >
-                Dashboard
-              </Link>
-              <UserButton
-                appearance={{
-                  elements: {
-                    avatarBox: "w-10 h-10",
-                  },
-                }}
-              />
-            </SignedIn>
-            <SignedOut>
-              <Link
-                href="/sign-in"
-                className="py-2 px-3 bg-purple-700 hover:bg-purple-800 text-white rounded transition duration-300"
-              >
-                Login
-              </Link>
-              <Link
-                href="/sign-up"
-                className="py-2 px-3 bg-purple-700 hover:bg-purple-800 text-white rounded transition duration-300"
-              >
-                Get Started
-              </Link>
-            </SignedOut>
-          </div>
-          <div className="md:hidden flex items-center">
-            <SignedIn>
-              <UserButton
-                appearance={{
-                  elements: {
-                    avatarBox: "w-10 h-10 mr-2",
-                  },
-                }}
-              />
-            </SignedIn>
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="mobile-menu-button p-2">
-              <svg
-                className="w-6 h-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className={`mobile-menu ${isMenuOpen ? "" : "hidden"} md:hidden`}>
+    <Navbar onMenuOpenChange={setIsMenuOpen} shouldHideOnScroll className="">
+      <NavbarContent>
+        <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="sm:hidden text-white" />
+        <NavbarBrand>
+          <Link href="/" className="font-extrabold text-xl sm:text-2xl text-white" onPress={closeMenu}>
+            StoriesOnTips
+          </Link>
+        </NavbarBrand>
+      </NavbarContent>
+
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {navigationItems.map((item) => (
-          <Link key={item.name} href={item.href} className="block py-2 px-4 text-sm hover:bg-purple-700" onClick={() => setIsMenuOpen(false)}>
-            {item.name}
-          </Link>
+          <NavbarItem key={item.name}>
+            <Link
+              color="foreground"
+              href={item.href}
+              className="text-white font-semibold hover:text-purple-200"
+              onPress={closeMenu}
+            >
+              {item.name}
+            </Link>
+          </NavbarItem>
         ))}
+      </NavbarContent>
+
+      <NavbarContent justify="end">
         <SignedIn>
-          <Link href="/dashboard" className="block py-2 px-4 text-sm hover:bg-purple-700">
-            Dashboard
-          </Link>
+          <NavbarItem className="hidden sm:flex">
+            <Button as={Link} color="primary" href="/dashboard" variant="flat" onPress={closeMenu}>
+              Dashboard
+            </Button>
+          </NavbarItem>
+          <NavbarItem>
+            <UserButton
+              appearance={{
+                elements: {
+                  avatarBox: "w-8 h-8",
+                },
+              }}
+              
+            />
+          </NavbarItem>
         </SignedIn>
         <SignedOut>
-          <Link href="/sign-in" className="block py-2 px-4 text-sm hover:bg-purple-700">
-            Sign In
-          </Link>
-          <Link href="/sign-up" className="block py-2 px-4 text-sm hover:bg-purple-700">
-            Sign Up
-          </Link>
+          <NavbarItem className="hidden sm:flex">
+            <Button as={Link} color="primary" href="/sign-in" variant="flat" onPress={closeMenu}>
+              Login
+            </Button>
+          </NavbarItem>
+          <NavbarItem>
+            <Button as={Link} color="primary" href="/sign-up" variant="flat" onPress={closeMenu}>
+              Get Started
+            </Button>
+          </NavbarItem>
         </SignedOut>
-      </div>
-    </nav>
+      </NavbarContent>
+
+      <NavbarMenu>
+        {navigationItems.map((item) => (
+          <NavbarMenuItem key={item.name}>
+            <Link className="text-white w-full" href={item.href} size="lg" onPress={closeMenu}>
+              {item.name}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+        <SignedIn>
+          <NavbarMenuItem>
+            <Link color="foreground" className="w-full" href="/dashboard" size="lg" onPress={closeMenu}>
+              Dashboard
+            </Link>
+          </NavbarMenuItem>
+        </SignedIn>
+        <SignedOut>
+          <NavbarMenuItem>
+            <Link color="foreground" className="w-full" href="/sign-in" size="lg" onPress={closeMenu}>
+              Login
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link color="foreground" className="w-full" href="/sign-up" size="lg" onPress={closeMenu}>
+              Get Started
+            </Link>
+          </NavbarMenuItem>
+        </SignedOut>
+      </NavbarMenu>
+    </Navbar>
   )
 }
 
