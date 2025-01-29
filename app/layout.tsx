@@ -7,7 +7,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { shadesOfPurple } from '@clerk/themes'
 // import { Background } from "./_components/background";
 
-const baloo = Comic_Neue({
+const comic = Comic_Neue({
   subsets: ["latin"],
   weight: "400"
 });
@@ -30,7 +30,7 @@ export default function RootLayout({
   afterSignOutUrl="/"
 >
    <html lang="en">
-      <body className={`${baloo.className}`}>
+      <body className={`${comic.className}`}>
       
         <Provider>
           <Header />

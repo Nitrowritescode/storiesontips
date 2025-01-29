@@ -79,8 +79,8 @@ export function Hero() {
               <Image
                 src="/owl.webp"
                 alt="A friendly owl mascot with a guitar"
-                width={400}
-                height={400}
+                width={800}
+                height={800}
                 className="object-contain"
                 priority
               />

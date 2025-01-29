@@ -45,9 +45,9 @@ const OptionsList = [
         <p className='text-white'>Select the image style you want!</p>
         <div className='grid grid-cols-3 gap-5 mt-3'>
          {OptionsList.map((item,index)=>(
-             <div key={item.label || index} className={`relative grayscale hover:grayscale-0 cursor-pointer p-1 ${selectedOption==item.label?'grayscale-0 border rounded-3xl border-primary':'grayscale'}`} onClick={()=>OnUserSelect(item)}>
-                 <h2 className='absolute bottom-5 text-center text-white text-xl md:text-xl lg:text-2xl w-full'>{item.label}</h2>
+             <div key={item.label || index} className={`relative grayscale hover:grayscale-0 cursor-pointer p-1 ${selectedOption==item.label?'grayscale-0 border rounded-3xl bg-blue-600 border-blue-600':'grayscale'}`} onClick={()=>OnUserSelect(item)}>
              <Image src={item.imageUrl} alt={item.label} width={300} height={500} className='object-cover h-[120px] rounded-3xl'/>
+                 <h2 className='text-center text-white text-xl md:text-xl lg:text-2xl w-full'>{item.label}</h2>
              </div>
          ))}
         </div>

@@ -16,7 +16,6 @@ export async function POST(req: NextRequest) {
       output_quality: 80,
     };
 
-    console.log("Calling Replicate API...");
     const output:any = await replicate.run("black-forest-labs/flux-schnell", {
       input,
     });

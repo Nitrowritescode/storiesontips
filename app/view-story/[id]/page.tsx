@@ -11,6 +11,8 @@ import { BsArrowLeftSquareFill, BsArrowRightSquareFill } from "react-icons/bs";
 import LastPage from "../_components/LastPage";
 import { use } from "react";
 import { useWindowSize } from "@/utils/useWindowSize"
+import { Button } from "@nextui-org/button";
+import Link from "next/link";
 
 // interface ViewStoryProps {
 //   params: {
@@ -61,7 +63,7 @@ function ViewStory({ params }: any) {
   }
 
   return (
-    <div className="bg-fancy md:px-20 lg:px-40 flex-col md:mx-auto lg:mx-auto min-h-screen mt-4">
+    <div className="bg-fancy md:px-20 lg:px-40 flex-col md:mx-auto lg:mx-auto min-h-screen">
       <h2 className="font-bold text-4xl text-center p-4 bg-primary text-white">
         {story.output?.bookTitle}
       </h2>
@@ -113,6 +115,9 @@ function ViewStory({ params }: any) {
         >
           <BsArrowRightSquareFill className="text-[40px] text-blue-600 cursor-pointer" />
         </div>}
+      </div>
+      <div className="py-8 md:py-10 lg:py-16 flex justify-center items-center w-20 mx-auto">
+        <Link href={'/dashboard'} passHref><Button>Back to Dashboard</Button></Link>
       </div>
     </div>
   );

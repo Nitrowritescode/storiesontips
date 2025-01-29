@@ -77,7 +77,7 @@ export default function UserStoryList() {
 
                         />
                         <Link href='/create-story' className='text-2xl' passHref>
-                            <Button  className=' bg-white p-8 mt-4' type='button' onPress={() => router.push('/create-story')}>
+                            <Button  className=' bg-white p-6 lg:p-8 mt-2 lg:mt-4 w-full mx-auto' type='button' onPress={() => router.push('/create-story')}>
                                 Create Story
                             </Button>
                         </Link>

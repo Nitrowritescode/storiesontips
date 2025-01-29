@@ -13,7 +13,7 @@ import { db } from "@/config/db";
 import uuid4 from "uuid4";
 import CustomLoader from "./_components/CustomLoader";
 import axios from "axios";
-import { useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 import { toast } from 'react-toastify';
 import { UserDetailContext } from "../_context/UserDetailContext";
@@ -38,10 +38,10 @@ const createStory = () => {
   const [formData, setFormData] = useState<FormDataType>();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const notify = (msg:string) => toast(msg);
-  const notifyError = (msg:string) => toast.error(msg);
-  const {user} = useUser();
-  const {userDetail,setUserDetail} =useContext(UserDetailContext);
+  const notify = (msg: string) => toast(msg);
+  const notifyError = (msg: string) => toast.error(msg);
+  const { user } = useUser();
+  const { userDetail, setUserDetail } = useContext(UserDetailContext);
 
   /** 
  * 
@@ -66,18 +66,17 @@ const createStory = () => {
 
   const GenerateStory = async () => {
     // generate story
-    
-    if (userDetail?.credit<=0) {
+
+    if (userDetail?.credit <= 0) {
       notifyError("You&apos;re out of credits!");
-      return ;
+      return;
     }
-    
-    
+
+
     setLoading(true);
     try {
-    
+
       const result = await chatSession.sendMessage(FINAL_PROMPT);
-      console.log("result:",result)
       const story = JSON.parse(result?.response.text());
 
       // Generate Image
@@ -99,19 +98,19 @@ const createStory = () => {
       const FirebaseStorageImageUrl = imageResult.data.imageUrl;
 
       console.log(result?.response.text());
-      
+
       const resp: any = await SaveInDB(
         result?.response.text(),
         FirebaseStorageImageUrl
       );
       console.log(resp);
-      notify("Story Generated");  
+      notify("Story Generated");
       await UpdateUserCredits();
       router?.replace("/view-story/" + resp[0].storyId);
       setLoading(false);
     } catch (e) {
       console.log(e);
-      notifyError("Server Error, Try Again!"); 
+      notifyError("Server Error, Try Again!");
       setLoading(false);
     }
 
@@ -138,10 +137,10 @@ const createStory = () => {
           storyType: formData?.storyType,
           storySubject: formData?.storySubject,
           output: JSON.parse(output),
-          coverImage:imageUrl,
+          coverImage: imageUrl,
           userEmail: user?.primaryEmailAddress?.emailAddress,
           userName: user?.fullName,
-          userImage:user?.imageUrl
+          userImage: user?.imageUrl
         }).returning({ storyId: StoryData?.storyId });
       setLoading(false);
       return result;
@@ -151,47 +150,48 @@ const createStory = () => {
     }
   };
 
- const UpdateUserCredits=async()=>{
-   const result = await db.update(Users).set({
-    credit:Number(userDetail?.credit-1)
-   }).where(eq(Users.userEmail,user?.primaryEmailAddress?.emailAddress??'')).returning({id:Users.id})
- }
+  const UpdateUserCredits = async () => {
+    const result = await db.update(Users).set({
+      credit: Number(userDetail?.credit - 1)
+    }).where(eq(Users.userEmail, user?.primaryEmailAddress?.emailAddress ?? '')).returning({ id: Users.id })
+  }
 
   return (
-    <>
-      <div className="min-h-screen bg-fancy">
-        <div className="container mx-auto px-4 py-12 md:py-20">
-          <div className="relative mb-12 text-center">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-white inline-block">
-              CREATE YOUR STORY
-            </h1>
-            <div className="absolute -top-6 -left-6 w-12 h-12 bg-yellow-300 rounded-full opacity-50 animate-pulse"></div>
-            <div className="absolute -bottom-6 -right-6 w-12 h-12 bg-pink-300 rounded-full opacity-50 animate-pulse"></div>
-          </div>
-          <p className="text-lg text-white text-center mt-4 mb-10 max-w-2xl mx-auto">
-            Unlock your creativity with AI: Craft stories like never before! Let
-            our AI bring your imagination to life, one story at a time.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-14">
-            <StorySubjectInput userSelection={onHandleUserSelection} />
-            <StoryType userSelection={onHandleUserSelection} />
-            <AgeGroup userSelection={onHandleUserSelection} />
-            <ImageStyle userSelection={onHandleUserSelection} />
-          </div>
-          <div className="flex-col flex justify-end my-10 ">
-            <Button
-              className="p-6 text-2xl w-full md:w-[80%] mx-auto font-bold bg-white"
-              disabled={loading}
-              onPress={GenerateStory}
-            >
-              Generate story
-            </Button>
-            <span className="text-white mx-auto text-m font-bold">1 coin will be used!</span>
-          </div>
+    <div className="min-h-screen bg-fancy">
+      <div className="container mx-auto px-4 py-12 md:py-20">
+        <div className="relative mb-12 text-center">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white inline-block">
+            CREATE YOUR STORY
+          </h1>
+          {/* animation dots to be fixed*/}
+          {/* <div className="absolute -top-6 -left-6 w-12 h-12 bg-yellow-300 rounded-full opacity-50 animate-pulse"></div>
+            <div className="absolute -bottom-6 -right-6 w-12 h-12 bg-pink-300 rounded-full opacity-50 animate-pulse"></div> */}
+
         </div>
-        <CustomLoader isLoading={loading} />
+        <p className="text-lg text-white text-center mt-4 mb-10 max-w-2xl mx-auto">
+          Unlock your creativity with AI: Craft stories like never before! Let
+          our AI bring your imagination to life, one story at a time.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-14">
+          <StorySubjectInput userSelection={onHandleUserSelection} />
+          <StoryType userSelection={onHandleUserSelection} />
+          <AgeGroup userSelection={onHandleUserSelection} />
+          <ImageStyle userSelection={onHandleUserSelection} />
+        </div>
+        <div className="flex-col flex justify-end my-10 ">
+          <Button
+            className="p-6 text-2xl w-full md:w-[80%] mx-auto font-bold bg-white"
+            disabled={loading}
+            onPress={GenerateStory}
+          >
+            Generate story
+          </Button>
+          <span className="text-white mx-auto text-m font-bold">1 coin will be used!</span>
+        </div>
       </div>
-    </>
+      <CustomLoader isLoading={loading} />
+    </div>
+
   );
 };
 

@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { useState, useEffect } from "react"
 import {
   Navbar,
   NavbarBrand,
@@ -9,10 +9,11 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-  Link,
   Button,
 } from "@nextui-org/react"
-import { UserButton, SignedIn, SignedOut, useUser } from "@clerk/nextjs"
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
+import Link from "next/link"
+
 
 const navigationItems = [
   { name: "Home", href: "/" },
@@ -21,104 +22,119 @@ const navigationItems = [
 ]
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false)
-  const { isLoaded, isSignedIn } = useUser()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  const closeMenu = () => {
+  useEffect(() => {
     setIsMenuOpen(false)
-  }
+  }, [])
 
-  if (!isLoaded) {
-    return null
-  }
+  const closeMenu = () => setIsMenuOpen(false)
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} isMenuOpen={isMenuOpen}  className="bg-navbar-fancy">
-      <NavbarContent>
-        <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="sm:hidden text-white" />
-        <NavbarBrand>
-          <Link href="/" className="font-extrabold text-xl sm:text-2xl text-white" onPress={closeMenu}>
-            StoriesOnTips
-          </Link>
-        </NavbarBrand>
-      </NavbarContent>
+    <div>
+      <Navbar onMenuOpenChange={setIsMenuOpen} className="bg-navbar-fancy">
+        <NavbarContent>
+          <NavbarMenuToggle 
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"} 
+            className="sm:hidden text-white" 
+          />
+          <NavbarBrand>
+            <Link href="/" className="font-extrabold text-xl sm:text-2xl text-white">
+              StoriesOnTips
+            </Link>
+          </NavbarBrand>
+        </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        {navigationItems.map((item) => (
-          <NavbarItem key={item.name}>
-            <Link
-              color="foreground"
-              href={item.href}
-              className="text-white font-semibold hover:text-purple-200"
-              onPress={closeMenu}
-            >
-              {item.name}
-            </Link>
-          </NavbarItem>
-        ))}
-      </NavbarContent>
+        <NavbarContent className="hidden sm:flex gap-4" justify="center">
+          {navigationItems.map((item) => (
+            <NavbarItem key={item.name}>
+              <Link
+                href={item.href}
+                className="text-white font-semibold hover:text-purple-200"
+                onClick={closeMenu}
+              >
+                {item.name}
+              </Link>
+            </NavbarItem>
+          ))}
+        </NavbarContent>
 
-      <NavbarContent justify="end">
-        <SignedIn>
-          <NavbarItem className="hidden sm:flex">
-            <Button as={Link} className="bg-blue-600 text-white" href="/dashboard" variant="flat" onPress={closeMenu}>
-              Dashboard
-            </Button>
-          </NavbarItem>
-          <NavbarItem>
-            <UserButton
-              appearance={{
-                elements: {
-                  avatarBox: "w-8 h-8",
-                },
-              }}
-              
-            />
-          </NavbarItem>
-        </SignedIn>
-        <SignedOut>
-          <NavbarItem className="hidden sm:flex text-white">
-            <Button as={Link} href="/sign-in" variant="flat" onPress={closeMenu}>
-              Login
-            </Button>
-          </NavbarItem>
-          <NavbarItem>
-            <Button as={Link} href="/sign-up" variant="flat" onPress={closeMenu}>
-              Get Started
-            </Button>
-          </NavbarItem>
-        </SignedOut>
-      </NavbarContent>
+        <NavbarContent justify="end">
+          <SignedIn>
+            <div className="flex gap-4 items-center">
+              <NavbarItem className="hidden sm:flex">
+                <Button 
+                  as={Link} 
+                  className="bg-blue-600 text-white" 
+                  href="/dashboard"
+                  onPress={closeMenu}
+                >
+                  Dashboard
+                </Button>
+              </NavbarItem>
+              <NavbarItem>
+                <UserButton
+                  appearance={{
+                    elements: { avatarBox: "w-8 h-8" }
+                  }}
+                />
+              </NavbarItem>
+            </div>
+          </SignedIn>
+          
+          <SignedOut>
+            <div className="flex gap-4">
+              <NavbarItem className="hidden sm:flex">
+                <Button 
+                  as={Link} 
+                  href="/sign-in" 
+                  className="bg-blue-600 text-white"
+                >
+                  Login
+                </Button>
+              </NavbarItem>
+              <NavbarItem>
+                <Button 
+                  as={Link} 
+                  href="/sign-up" 
+                  className="bg-blue-600 text-white"
+                >
+                  Get Started
+                </Button>
+              </NavbarItem>
+            </div>
+          </SignedOut>
+        </NavbarContent>
 
-      <NavbarMenu>
-        {navigationItems.map((item) => (
-          <NavbarMenuItem key={item.name}>
-            <Link className="text-white w-full" href={item.href} size="lg" onPress={closeMenu}>
-              {item.name}
-            </Link>
-          </NavbarMenuItem>
-        ))}
-        <SignedIn>
-          <NavbarMenuItem>
-            <Link className="w-full text-white" href="/dashboard" size="lg" onPress={closeMenu}>
-              Dashboard
-            </Link>
-          </NavbarMenuItem>
-        </SignedIn>
-        <SignedOut>
-          <NavbarMenuItem>
-            <Link className="w-full text-white" href="/sign-in" size="lg" onPress={closeMenu}>
-              Login
-            </Link>
-          </NavbarMenuItem>
-          <NavbarMenuItem>
-            <Link className="w-full text-white" href="/sign-up" size="lg" onPress={closeMenu}>
-              Get Started
-            </Link>
-          </NavbarMenuItem>
-        </SignedOut>
-      </NavbarMenu>
-    </Navbar>
+        <NavbarMenu className="w-[60%] h-[60vh]">
+          {navigationItems.map((item) => (
+            <NavbarMenuItem key={item.name}>
+              <Link className="text-white w-full" href={item.href} onClick={closeMenu}>
+                {item.name}
+              </Link>
+            </NavbarMenuItem>
+          ))}
+          <SignedIn>
+            <NavbarMenuItem>
+              <Link className="w-full text-white" href="/dashboard" onClick={closeMenu}>
+                Dashboard
+              </Link>
+            </NavbarMenuItem>
+          </SignedIn>
+          <SignedOut>
+            <NavbarMenuItem>
+              <Link className="w-full text-white" href="/sign-in" onClick={closeMenu}>
+                Login
+              </Link>
+            </NavbarMenuItem>
+            <NavbarMenuItem>
+              <Link className="w-full text-white" href="/sign-up" onClick={closeMenu}>
+                Get Started
+              </Link>
+            </NavbarMenuItem>
+          </SignedOut>
+        </NavbarMenu>
+      </Navbar>
+    </div>
   )
 }
-
