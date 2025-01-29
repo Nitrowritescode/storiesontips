@@ -23,6 +23,15 @@ const config: Config = {
             rgb(10,10,18)
           )
         `,
+        "navbar-fancy": `
+           linear-gradient(
+    to right,
+    rgba(10, 10, 18, 0.9),
+    rgba(46, 16, 74, 0.9)
+  ),
+  radial-gradient(circle at top left, rgba(88,28,135,0.15), transparent 80%),
+  radial-gradient(circle at top right, rgba(192,132,252,0.1), transparent 50%)
+        `,
       },
       colors: {
         border: "hsl(var(--border))",

@@ -33,7 +33,7 @@ export function Header() {
   }
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} shouldHideOnScroll className="">
+    <Navbar onMenuOpenChange={setIsMenuOpen} className="bg-navbar-fancy">
       <NavbarContent>
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="sm:hidden text-white" />
         <NavbarBrand>
@@ -61,7 +61,7 @@ export function Header() {
       <NavbarContent justify="end">
         <SignedIn>
           <NavbarItem className="hidden sm:flex">
-            <Button as={Link} color="primary" href="/dashboard" variant="flat" onPress={closeMenu}>
+            <Button as={Link} className="bg-blue-600 text-white" href="/dashboard" variant="flat" onPress={closeMenu}>
               Dashboard
             </Button>
           </NavbarItem>
@@ -77,13 +77,13 @@ export function Header() {
           </NavbarItem>
         </SignedIn>
         <SignedOut>
-          <NavbarItem className="hidden sm:flex">
-            <Button as={Link} color="primary" href="/sign-in" variant="flat" onPress={closeMenu}>
+          <NavbarItem className="hidden sm:flex text-white">
+            <Button as={Link} href="/sign-in" variant="flat" onPress={closeMenu}>
               Login
             </Button>
           </NavbarItem>
           <NavbarItem>
-            <Button as={Link} color="primary" href="/sign-up" variant="flat" onPress={closeMenu}>
+            <Button as={Link} href="/sign-up" variant="flat" onPress={closeMenu}>
               Get Started
             </Button>
           </NavbarItem>
@@ -100,19 +100,19 @@ export function Header() {
         ))}
         <SignedIn>
           <NavbarMenuItem>
-            <Link color="foreground" className="w-full" href="/dashboard" size="lg" onPress={closeMenu}>
+            <Link className="w-full text-white" href="/dashboard" size="lg" onPress={closeMenu}>
               Dashboard
             </Link>
           </NavbarMenuItem>
         </SignedIn>
         <SignedOut>
           <NavbarMenuItem>
-            <Link color="foreground" className="w-full" href="/sign-in" size="lg" onPress={closeMenu}>
+            <Link className="w-full text-white" href="/sign-in" size="lg" onPress={closeMenu}>
               Login
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
-            <Link color="foreground" className="w-full" href="/sign-up" size="lg" onPress={closeMenu}>
+            <Link className="w-full text-white" href="/sign-up" size="lg" onPress={closeMenu}>
               Get Started
             </Link>
           </NavbarMenuItem>

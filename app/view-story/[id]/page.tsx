@@ -61,7 +61,7 @@ function ViewStory({ params }: any) {
   }
 
   return (
-    <div className="md:px-20 lg:px-40 flex-col md:mx-auto lg:mx-auto min-h-screen mt-4">
+    <div className="bg-fancy md:px-20 lg:px-40 flex-col md:mx-auto lg:mx-auto min-h-screen mt-4">
       <h2 className="font-bold text-4xl text-center p-4 bg-primary text-white">
         {story.output?.bookTitle}
       </h2>

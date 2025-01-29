@@ -33,7 +33,7 @@ export default function ExploreMore() {
     
 
     return(
-        <div className='min-h-screen p-10 md:px-10 lg:px-40 mt-10'>
+        <div className='min-h-screen p-10 md:px-10 lg:px-40 bg-fancy'>
             <h2 className='text-4xl font-bold text-center text-white'>Explore More Stories</h2>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 mt-10'>
             {storyList?.map((item,index)=>(
@@ -41,7 +41,7 @@ export default function ExploreMore() {
             ))}
             </div>
             <div className='text-center mt-10'>
-            <Button color='primary' onPress={()=>GetAllStories(offset+6)}>Load More</Button>
+            <Button className='bg-white ' onPress={()=>GetAllStories(offset+6)}>Load More</Button>
             </div>
         </div>
     )

@@ -71,7 +71,7 @@ export default function BuyCredits() {
     }
      
     return (
-        <div className='min-h-screen p-10 md:px-20 lg:px-40 text-primary'>
+        <div className='min-h-screen p-10 md:px-20 lg:px-40 text-red-800 bg-fancy'>
             <h2 className='text-3xl font-bold text-white'>Add More Coins</h2>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-10 items-center justify-center'>
             <div>
