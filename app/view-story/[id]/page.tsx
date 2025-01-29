@@ -117,7 +117,7 @@ function ViewStory({ params }: any) {
         </div>}
       </div>
       <div className="py-8 md:py-10 lg:py-16 flex justify-center items-center w-20 mx-auto">
-        <Link href={'/dashboard'} passHref><Button>Back to Dashboard</Button></Link>
+        <Link href='/dashboard' passHref><Button>Back to Dashboard</Button></Link>
       </div>
     </div>
   );
