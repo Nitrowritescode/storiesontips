@@ -33,7 +33,7 @@ export function Header() {
   }
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} className="bg-navbar-fancy">
+    <Navbar onMenuOpenChange={setIsMenuOpen} isMenuOpen={isMenuOpen}  className="bg-navbar-fancy">
       <NavbarContent>
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="sm:hidden text-white" />
         <NavbarBrand>
