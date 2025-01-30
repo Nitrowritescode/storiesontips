@@ -12,6 +12,7 @@ import {
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { SignOutButton } from "./SignOutButton"
 
 const navigationItems = [
   { name: "Home", href: "/" },
@@ -22,6 +23,15 @@ const navigationItems = [
 export function Header() {
   const [isClient, setIsClient] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+ 
+ 
+
+  // added this for custom signout flow using clerk 
+  // const handleSignOut = async () => {
+  //   await signOut();
+  //   router.push("/"); // or any route you want
+  // };
+
 
   useEffect(() => {
     setIsClient(true)
@@ -59,27 +69,35 @@ export function Header() {
           </div>
           <div className="hidden md:block">
             <SignedIn>
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2 py-2">
                 <Link
                   href="/dashboard"
-                  className="bg-blue-600 hover:bg-blue-800 text-white px-3 py-2 rounded-xl text-sm font-medium"
+                  className="bg-blue-600 hover:bg-blue-800 text-white px-3 py-2 rounded-xl font-medium"
                 >
                   Dashboard
                 </Link>
-                <UserButton afterSignOutUrl="/" />
+                <SignOutButton/>
+                <UserButton  appearance={{
+          elements: {
+            // Hide the default sign-out button in the popover
+            userButtonPopoverActionButton__signOut: {
+              display: "none",
+            },
+          },
+        }} />
               </div>
             </SignedIn>
             <SignedOut>
               <div className="flex items-center space-x-4">
                 <Link
                   href="/sign-in"
-                  className="text-gray-300 hover:bg-blue-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-white bg-blue-600  px-3 py-2 rounded-xl text-sm font-medium"
                 >
                   Login
                 </Link>
                 <Link
                   href="/sign-up"
-                  className="bg-blue-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-purple-500"
+                  className="text-white bg-blue-600 px-3 py-2 rounded-xl text-sm font-medium"
                 >
                   Get Started
                 </Link>
@@ -88,7 +106,14 @@ export function Header() {
           </div>
           <div className="md:hidden flex items-center">
             <SignedIn>
-              <UserButton afterSignOutUrl="/" />
+              <UserButton appearance={{
+          elements: {
+            // Hide the default sign-out button in the popover
+            userButtonPopoverActionButton__signOut: {
+              display: "none",
+            },
+          },
+        }} />
             </SignedIn>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -141,9 +166,11 @@ export function Header() {
                 href="/dashboard"
                 className="bg-blue-600 block px-3 py-2 rounded-md text-base text-white text-center font-medium"
                 onClick={() => setIsMenuOpen(false)}
-              >
+                >
                 Dashboard
               </Link>
+                <SignOutButton/>
+
             </SignedIn>
             <SignedOut>
               <Link
