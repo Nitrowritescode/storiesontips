@@ -10,7 +10,7 @@ export const SignOutButton = () => {
   
   return (
    
-    <Button as={Link} href="/"
+    <Button
       onPress={() => signOut({ redirectUrl: '/' })}
       className="bg-blue-600 text-white px-3 py-2 w-full md:rounded-xl"
     >
