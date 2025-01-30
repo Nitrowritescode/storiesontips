@@ -1,14 +1,16 @@
 "use client";
 
 import { useClerk } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 export const SignOutButton = () => {
   const { signOut } = useClerk();
+  const router = useRouter();
 
   const handleSignOut = async () => {
     await signOut();
     // Force a full browser refresh to "/"
-    window.location.href = "/";
+    router.push("/");
   };
 
   return (
