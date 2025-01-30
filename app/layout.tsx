@@ -27,6 +27,7 @@ export default function RootLayout({
   appearance={{
     baseTheme: shadesOfPurple,
   }}
+  afterSignOutUrl="/"
 >
    <html lang="en">
       <body className={`${comic.className}`}>
