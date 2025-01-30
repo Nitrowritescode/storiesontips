@@ -11,38 +11,67 @@ import { toast } from 'react-toastify';
 
 
 export default function ExploreMore() {
-    const [offset,setOffset] = useState(0);
-    const [storyList,setStoryList] = useState<StoryItemType[]>();
+    const [offset, setOffset] = useState(0);
+    const [storyList, setStoryList] = useState<StoryItemType[]>([]);
+    const [hasMore, setHasMore] = useState(true);
 
-    useEffect(()=>{
+    useEffect(() => {
         GetAllStories(0);
-    },[])
-    const GetAllStories = async (offset: number) => {
-        setOffset(offset);
-        const result: any = await db.select().from(StoryData).orderBy(desc(StoryData.id)).limit(8).offset(offset);
-        console.log(result);
-        
-        if (!result || result.length === 0) {
-            toast("No more stories to load!");
-            return;
+    }, []);
+
+    useEffect(() => {
+        // Check if we've reached the 20-story limit after state update
+        if (storyList.length >= 15) {
+            setHasMore(false);
         }
-        
-        setStoryList((prev: any) => (Array.isArray(prev) ? [...prev, ...result] : [...result]));
+    }, [storyList]);
 
+    const GetAllStories = async (newOffset: number) => {
+        if (!hasMore) return;
+
+        try {
+            const result = await db.select()
+                .from(StoryData)
+                .orderBy(desc(StoryData.id))
+                .limit(8)
+                .offset(newOffset);
+
+            if (!result?.length) {
+                setHasMore(false);
+                return;
+            }
+
+            setStoryList((prev) => {
+                const combined = [...prev, ...result];
+                // Ensure we never exceed 20 stories
+                return combined.slice(0, 15) as StoryItemType[];
+            });
+            
+            setOffset(newOffset);
+            
+        } catch (error) {
+            console.error('Failed to load stories:', error);
+        }
     };
-    
 
-    return(
+    return (
         <div className='min-h-screen p-10 md:px-10 lg:px-40 bg-fancy'>
             <h2 className='text-4xl font-bold text-center text-white'>Explore More Stories</h2>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 mt-10'>
-            {storyList?.map((item,index)=>(
-                <StoryItemCard story={item} key={index}/>
-            ))}
+                {storyList.map((item, index) => (
+                    <StoryItemCard story={item} key={index} />
+                ))}
             </div>
-            <div className='text-center mt-10'>
-            <Button className='bg-white ' onPress={()=>GetAllStories(offset+6)}>Load More</Button>
-            </div>
+            {hasMore && (
+                <div className='text-center mt-10'>
+                    <Button 
+                        className='bg-white'
+                        onPress={() => GetAllStories(offset + 8)}
+                    >
+                        Load More
+                    </Button>
+                </div>
+            )}
         </div>
     )
-};
+}

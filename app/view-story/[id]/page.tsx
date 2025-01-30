@@ -13,6 +13,7 @@ import { use } from "react";
 import { useWindowSize } from "@/utils/useWindowSize"
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 // interface ViewStoryProps {
 //   params: {
@@ -26,11 +27,12 @@ function ViewStory({ params }: any) {
   const [isLoading, setIsLoading] = useState(true);
   const bookRef = useRef<any>(null);
   const [count, setCount] = useState(0);
-  const { width, height } = useWindowSize()
+  const { width, height } = useWindowSize();
+  const router = useRouter();
 
   // Calculate book dimensions based on screen size
   const bookWidth = Math.min(500, width * 0.8)
-  const bookHeight = Math.min(700, height * 0.6)
+  const bookHeight = Math.min(700, height * 0.5)
 
   useEffect(() => {
     getStory();
@@ -113,11 +115,11 @@ function ViewStory({ params }: any) {
             setCount(count + 1);
           }}
         >
-          <BsArrowRightSquareFill className="text-[40px] text-blue-600 cursor-pointer" />
+          <BsArrowRightSquareFill className="text-[40px] cursor-pointer text-blue-600" />
         </div>}
       </div>
-      <div className="py-8 md:py-10 lg:py-16 flex justify-center items-center w-20 mx-auto">
-        <Link href='/dashboard' passHref><Button>Back to Dashboard</Button></Link>
+      <div className="py-8 md:py-10 lg:py-24 flex justify-center items-center mx-auto">
+        <Button as={Link} href="/dashboard" className="bg-blue-600 text-white w-[80%] mx-auto">Back to Dashboard</Button>
       </div>
     </div>
   );

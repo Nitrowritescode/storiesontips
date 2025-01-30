@@ -4,9 +4,7 @@ import React, { useEffect } from "react";
 import {
   Modal,
   ModalContent,
-  ModalHeader,
   ModalBody,
-  ModalFooter,
   useDisclosure,
 } from "@nextui-org/modal";
 import Image from 'next/image';
@@ -19,8 +17,8 @@ function CustomLoader({isLoading}:any) {
   },[])
 
   return (
-    <div>
-     {isLoading&& <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+    <div className="flex items-center">
+     {isLoading&& <Modal isOpen={isOpen} onOpenChange={onOpenChange} className="mb-[70%] md:mb-0 lg:mb-0">
         <ModalContent>
           {(onClose) => (
             <>

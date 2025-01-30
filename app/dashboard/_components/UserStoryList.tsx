@@ -76,16 +76,16 @@ export default function UserStoryList() {
                             height={400}
 
                         />
-                        <Link href='/create-story' className='text-2xl' passHref>
-                            <Button  className=' bg-white p-6 lg:p-8 mt-2 lg:mt-4 w-full mx-auto' type='button' onPress={() => router.push('/create-story')}>
+                        <Link href='/create-story' className='text-2xl w-[80%] mx-auto' passHref>
+                            <Button  className=' bg-white p-4 lg:p-6 mt-2 lg:mt-4 w-full mx-auto' type='button' onPress={() => router.push('/create-story')}>
                                 Create Story
                             </Button>
                         </Link>
-                        <p className='text-white text-xxl p-2 font-bold text-center'>Unleash Your Imagination!</p>
+                        <p className='text-white text-xl p-2 font-bold text-center'>Unleash Your Imagination!</p>
                     </div>
 
                 )}
-            <CustomLoader isLoading={loading} />
+            <CustomLoader isLoading={loading}/>
         </div>
     )
 }

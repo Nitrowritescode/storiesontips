@@ -1,82 +1,80 @@
-"use client";
+<Navbar onMenuOpenChange={setIsMenuOpen} className="bg-navbar-fancy z-50" maxWidth="full">
+      <NavbarContent>
+        <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="sm:hidden text-white" />
+        <NavbarBrand>
+          <Link href="/" className="font-extrabold text-xl sm:text-2xl text-white">
+            StoriesOnTips
+          </Link>
+        </NavbarBrand>
+      </NavbarContent>
 
-import { db } from "@/config/db";
-import { StoryData } from "@/config/schema";
-import { eq } from "drizzle-orm";
-import React, { useEffect, useRef, useState } from "react";
-import HTMLFlipBook from "react-pageflip";
-import BookCoverPage from "../_components/BookCoverPage";
-import StoryPages from "../_components/StoryPages";
-import { BsArrowLeftSquareFill, BsArrowRightSquareFill } from "react-icons/bs";
-import LastPage from "../_components/LastPage";
-// import LastPage from '../_components/LastPage'
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        {navigationItems.map((item) => (
+          <NavbarItem key={item.name}>
+            <Link href={item.href} className="text-white font-semibold hover:text-purple-200" onClick={closeMenu}>
+              {item.name}
+            </Link>
+          </NavbarItem>
+        ))}
+      </NavbarContent>
 
-function ViewStory({ params }: any) {
-  const [story, setStory] = useState<any>();
-  const bookRef=useRef<any>(null);
-  const [count,setCount] = useState(0);
+      <NavbarContent justify="end">
+        <SignedIn>
+          <NavbarItem className="hidden sm:flex">
+            <Button as={Link} className="bg-blue-600 text-white" href="/dashboard" onClick={closeMenu}>
+              Dashboard
+            </Button>
+          </NavbarItem>
+          <NavbarItem>
+            <UserButton
+              appearance={{
+                elements: { avatarBox: "w-8 h-8" },
+              }}
+              afterSignOutUrl="/"
+            />
+          </NavbarItem>
+        </SignedIn>
 
-  useEffect(() => {
-    console.log(params.id);
-    getStory();
-  }, []);
+        <SignedOut>
+          <NavbarItem className="hidden sm:flex">
+            <Button as={Link} href="/sign-in" className="bg-blue-600 text-white">
+              Login
+            </Button>
+          </NavbarItem>
+          <NavbarItem>
+            <Button as={Link} href="/sign-up" className="bg-blue-600 text-white">
+              Get Started
+            </Button>
+          </NavbarItem>
+        </SignedOut>
+      </NavbarContent>
 
-  const getStory = async () => {
-    const result = await db
-      .select()
-      .from(StoryData)
-      .where(eq(StoryData.storyId, params.id));
-
-    console.log(result[0]);
-    setStory(result[0]);
-  };
-
-  return (
-    <div className="p-10 md:px-20 lg:px-40  flex-col mx-auto min-h-screen">
-      <h2 className="font-bold text-4xl text-center p-4 bg-primary text-white">
-        {story?.output?.bookTitle}
-      </h2>
-
-      {/* @ts-ignore */}
-      <div className="relative mx-auto">
-        {/* @ts-ignore */}
-        <HTMLFlipBook
-          width={500}
-          height={500}
-          showCover={true}
-          className="mt-10 mx-auto"
-          useMouseEvents={false}
-          ref={bookRef}
-        >
-          <div>
-            <BookCoverPage imageUrl={story?.coverImage} />
-          </div>
-
-          {[...Array(story?.output?.chapters?.length)].map((item, index) => (
-            <div key={index} className="bg-white p-10 border">
-              <StoryPages storyChapter={story?.output?.chapters[index]} />
-            </div>
-          ))}
-
-          {/* Last page to be completed later */}
-           {/* <div>
-           <LastPage/>
-           </div> */}
-        </HTMLFlipBook>
-
-        <div className="absolute -left-10 top-[250px]">
-          <BsArrowLeftSquareFill className="text-[40px] text-primary cursor-pointer" onClick={()=>{
-            bookRef.current.pageFlip().flipPrev()
-        }}/>
-        </div>
-        <div className="absolute -right-10 top-[250px]" onClick={()=>{
-            bookRef.current.pageFlip().flipNext()
-        }}>
-          <BsArrowRightSquareFill className="text-[40px] text-primary cursor-pointer"/>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default ViewStory;
+      <NavbarMenu className="bg-navbar-fancy pt-6 w-[40%] h-[50%] absolute top-16 right-0 overflow-y-auto z-80">
+        {navigationItems.map((item) => (
+          <NavbarMenuItem key={item.name}>
+            <Link className="w-full text-white hover:text-purple-200" href={item.href} onClick={closeMenu}>
+              {item.name}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+        <SignedIn>
+          <NavbarMenuItem>
+            <Link className="w-full text-white hover:text-purple-200" href="/dashboard" onClick={closeMenu}>
+              Dashboard
+            </Link>
+          </NavbarMenuItem>
+        </SignedIn>
+        <SignedOut>
+          <NavbarMenuItem>
+            <Link className="w-full text-white hover:text-purple-200" href="/sign-in" onClick={closeMenu}>
+              Login
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link className="w-full text-white hover:text-purple-200" href="/sign-up" onClick={closeMenu}>
+              Get Started
+            </Link>
+          </NavbarMenuItem>
+        </SignedOut>
+      </NavbarMenu>
+    </Navbar>
