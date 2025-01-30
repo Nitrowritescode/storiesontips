@@ -1,6 +1,7 @@
 "use client";
 
 import { useClerk } from "@clerk/nextjs";
+import { error } from "console";
 import { useRouter } from "next/navigation";
 
 export const SignOutButton = () => {
@@ -8,8 +9,11 @@ export const SignOutButton = () => {
   const router = useRouter();
 
   const handleSignOut = async () => {
-    // await signOut();
-    // redirect to homepage
+    try{await signOut();
+    }catch(error) {
+      console.log(error)
+    }
+      // redirect to homepage
     router.push("/");
   };
 
