@@ -8,7 +8,7 @@ export const SignOutButton = () => {
   const router = useRouter();
 
   const handleSignOut = async () => {
-    await signOut();
+    // await signOut();
     // redirect to homepage
     router.push("/");
   };
