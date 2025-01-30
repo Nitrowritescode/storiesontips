@@ -9,7 +9,7 @@ export const SignOutButton = () => {
 
   const handleSignOut = async () => {
     await signOut();
-    // Force a full browser refresh to "/"
+    // redirect to homepage
     router.push("/");
   };
 
