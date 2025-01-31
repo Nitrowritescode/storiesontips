@@ -9,17 +9,26 @@ const isProtectedRoute = createRouteMatcher([
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
-  // Skip middleware for Clerk's auth routes
-  if (req.nextUrl.pathname.startsWith("/api/auth/")) return;
-  
-  if (isProtectedRoute(req)) await auth.protect();
+
+  if (isProtectedRoute(req)) {
+    try {
+      await auth.protect();
+    } catch (error:any) {
+      // If user is authenticated but unauthorized, Clerk returns a 404 error
+      // Redirect them to the sign-in page instead
+      if (error.status === 404) {
+        return Response.redirect(new URL('/sign-in', req.nextUrl.origin));
+      }
+      throw error; // Re-throw other errors
+    }
+  }
 });
 
 export const config = {
   matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
+    // Skip Next.js internals and static files unless found in search params
     '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-    // Always run for API routes EXCEPT Clerk auth routes
+    // Always run for API routes 
     '/(api|trpc)(.*)',
   ],
 };
