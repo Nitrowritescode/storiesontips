@@ -68,7 +68,8 @@ const createStory = () => {
     // generate story
 
     if (userDetail?.credit <= 0) {
-      notifyError("You&apos;re out of credits!");
+      notifyError("You are out of coins!");
+      
       return;
     }
 

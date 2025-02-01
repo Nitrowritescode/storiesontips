@@ -87,7 +87,7 @@ function ViewStory({ params }: any) {
 
           {/* Story Pages */}
           {story.output?.chapters?.map((chapter: any, index: number) => (
-            <div key={`chapter-${index}`} className="page bg-white p-10 border">
+            <div key={`chapter-${index}`} className="page bg-white p-4 border">
               <StoryPages storyChapter={chapter} />
             </div>
           ))}
