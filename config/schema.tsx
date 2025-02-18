@@ -13,6 +13,7 @@ export const StoryData=pgTable('storyData',{
     userEmail:varchar('userEmail'),
     userName:varchar('userName'),
     userImage:varchar('userImage'),
+    
 }) 
 
 export const Users = pgTable('users', {

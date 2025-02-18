@@ -14,6 +14,8 @@ import { useWindowSize } from "@/utils/useWindowSize"
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Moral from "../_components/Moral";
+import DifficultWords from "../_components/DifficultWords";
 
 // interface ViewStoryProps {
 //   params: {
@@ -63,7 +65,7 @@ function ViewStory({ params }: any) {
   if (!story) {
     return <div className="p-10 text-center">Story not found</div>;
   }
-
+ 
   return (
     <div className="bg-fancy md:px-20 lg:px-40 flex-col md:mx-auto lg:mx-auto min-h-screen">
       <h2 className="font-bold text-4xl text-center p-4 bg-primary text-white">
@@ -94,7 +96,7 @@ function ViewStory({ params }: any) {
 
           {/* Last Page */}
           <div className="page bg-white p-10 border">
-            <LastPage />
+            <LastPage moral={story.output?.moralOfTheStory} />
           </div>
         </HTMLFlipBook>
 
@@ -117,9 +119,17 @@ function ViewStory({ params }: any) {
         >
           <BsArrowRightSquareFill className="text-[40px] cursor-pointer text-blue-600" />
         </div>}
+
       </div>
-      <div className="py-8 md:py-10 lg:py-24 flex justify-center items-center mx-auto">
-        <Button as={Link} href="/dashboard" className="bg-blue-600 text-white w-[80%] mx-auto">Back to Dashboard</Button>
+      <div className="mt-32 mb-6 p-4">
+              <Moral moral={story.output?.moralOfTheStory?.moral}/>
+      </div>
+      <div className="my-16 p-4">
+              <DifficultWords chapters={story.output?.chapters}/>
+      </div>
+    
+      <div className="flex justify-center items-center mx-auto">
+        <Button as={Link} href="/dashboard" className="bg-blue-800 text-white w-[80%] mb-20 mx-auto">Back to Dashboard</Button>
       </div>
     </div>
   );
