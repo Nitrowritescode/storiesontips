@@ -8,7 +8,8 @@ import { useEffect, useState } from "react"
 const navigationItems = [
   { name: "Home", href: "/" },
   { name: "Create Story", href: "/create-story" },
-  { name: "Explore Stories", href: "/explore" },
+  { name: "Library", href: "/explore" },
+  { name: "Buy Coins", href: "/buy-credits" },
 ]
 
 export function Header() {
@@ -35,8 +36,8 @@ export function Header() {
   }
 
   return (
-    <>
-      <nav className="bg-navbar-fancy">
+    <header className="bg-navbar-fancy backdrop-blur-sm">
+      <nav className="">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -173,7 +174,7 @@ export function Header() {
           </div>
         )}
       </nav>
-    </>
+    </header>
   )
 }
 

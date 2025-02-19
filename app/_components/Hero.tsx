@@ -15,7 +15,7 @@ export function Hero() {
   const router = useRouter();
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-fancy">
+    <div className="relative min-h-screen w-full overflow-hidden">
       <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-12 lg:flex-row lg:justify-between">
           {/* Content */}
@@ -88,6 +88,7 @@ export function Hero() {
           </motion.div>
         </div>
       </div>
+      {/* Features Section */}
     </div>
   )
 }

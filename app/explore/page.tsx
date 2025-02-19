@@ -56,7 +56,8 @@ export default function ExploreMore() {
 
     return (
         <div className='min-h-screen p-10 md:px-10 lg:px-40 bg-fancy'>
-            <h2 className='text-4xl font-bold text-center text-white'>Explore More Stories</h2>
+            <h2 className='text-4xl font-bold text-center text-white'>Story Library</h2>
+            <h3 className='text-l py-2 text-white text-center'>Explore more stories here created by others</h3>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 mt-10'>
                 {storyList.map((item, index) => (
                     <StoryItemCard story={item} key={index} />
