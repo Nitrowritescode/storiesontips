@@ -1,8 +1,13 @@
-'use client'
-
 import React from 'react';
 import DashboardHeader from './_components/DashboardHeader';
 import UserStoryList from './_components/UserStoryList';
+
+
+export const metadata = {
+  title: "User Dashboard",
+  description: "View and manage your AI-generated stories on the user dashboard.",
+};
+
 
 export default function Dashboard() {
   return (
