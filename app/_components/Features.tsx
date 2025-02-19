@@ -70,8 +70,8 @@ export default function Features() {
               <div className="rounded-full bg-purple-500/20 w-12 h-12 flex items-center justify-center mb-4">
                 <Share2 className="w-6 h-6 text-purple-300" />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Easy Sharing</h3>
-              <p className="text-purple-200">Share your stories with family, friends, or the community</p>
+              <h3 className="text-xl font-semibold text-white mb-2">Easy Learning</h3>
+              <p className="text-purple-200">Learn vocabulary and pronunciation with family and friends</p>
             </CardBody>
           </Card>
         </div>
