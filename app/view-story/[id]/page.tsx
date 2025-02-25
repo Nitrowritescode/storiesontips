@@ -34,7 +34,7 @@ function ViewStory({ params }: any) {
 
   // Calculate book dimensions based on screen size
   const bookWidth = Math.min(500, width * 0.8)
-  const bookHeight = Math.min(700, height * 0.5)
+  const bookHeight = Math.min(700, height * 0.6)
 
   useEffect(() => {
     getStory();
@@ -96,7 +96,7 @@ function ViewStory({ params }: any) {
 
           {/* Last Page */}
           <div className="page bg-white p-10 border">
-            <LastPage moral={story.output?.moralOfTheStory} />
+            <LastPage />
           </div>
         </HTMLFlipBook>
 
