@@ -16,7 +16,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 import { toast } from 'react-toastify';
-import { UserDetailContext } from "../_context/UserDetailContext";
+import { UserDetailContext } from "../../_context/UserDetailContext";
 import { eq } from "drizzle-orm";
 
 

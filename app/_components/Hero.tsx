@@ -76,14 +76,7 @@ export function Hero() {
             className="relative mx-auto lg:mx-0"
           >
             <div className="relative aspect-square w-full max-w-md">
-              <Image
-                src="/owl.webp"
-                alt="A friendly owl mascot with a guitar"
-                width={800}
-                height={800}
-                className="object-contain"
-                priority
-              />
+         
             </div>
           </motion.div>
         </div>

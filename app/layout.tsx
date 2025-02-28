@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Comic_Neue } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Provider from "./provider";
 import { Header } from "./_components/Header";
@@ -7,7 +7,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { shadesOfPurple } from "@clerk/themes";
 // import { Background } from "./_components/background";
 
-const comic = Comic_Neue({
+const inter = Inter({
   subsets: ["latin"],
   weight: "400",
 });
@@ -57,10 +57,9 @@ export default function RootLayout({
       afterSignOutUrl="/"
     >
       <html lang="en">
-        <body className={`${comic.className}`}>
+        <body className={`${inter.className}`}>
           <Provider>
-            <Header />
-            <main>{children}</main>
+            <div>{children}</div>
           </Provider>
         </body>
       </html>

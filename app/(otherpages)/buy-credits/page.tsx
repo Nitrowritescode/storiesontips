@@ -4,7 +4,7 @@ import { db } from '@/config/db';
 import { Users } from '@/config/schema';
 import { PayPalButtons } from '@paypal/react-paypal-js';
 import React, { useContext, useEffect, useState } from 'react';
-import { UserDetailContext } from '../_context/UserDetailContext';
+import { UserDetailContext } from '../../_context/UserDetailContext';
 import { eq } from 'drizzle-orm';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
