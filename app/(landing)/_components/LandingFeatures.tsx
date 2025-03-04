@@ -1,112 +1,76 @@
-import { cn } from "@/lib/utils";
-import {
-  IconAdjustmentsBolt,
-  IconCloud,
-  IconCurrencyDollar,
-  IconEaseInOut,
-  IconHeart,
-  IconHelp,
-  IconRouteAltLeft,
-  IconTerminal2,
-} from "@tabler/icons-react";
-import { Wand2, Brain, Clock, Sparkles, BookOpen, Share2 } from "lucide-react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Wand2, Brain, Clock, Sparkles, BookOpen, Share2, Currency } from 'lucide-react'
 
-export function LandingFeatures() {
-  const features = [
-    {
-      title: "AI-Powered Creation",
-      description: "Transform your ideas into enchanting stories with our magical AI assistant.",
-      icon: <Wand2 />,
-    },
-    {
-      title: "Creative Stories",
-      description: "Creative Stories and different image styles to spark your imagination.",
-      icon: <Brain />,
-    },
-    {
-      title: "Quick Creation",
-      description: "Create beautiful stories in seconds, not minutes.",
-      icon: <Clock />,
-    },
-    {
-      title: "Magical Elements",
-      description: "Add majestic image styles and magical plot twists to your stories.",
-      icon: <Sparkles />,
-    },
-    {
-      title: "Story Library",
-      description: "Access a growing collection of user-created stories for inspiration.",
-      icon: <BookOpen />,
-    },
-    {
-      title: "Easy Learning",
-      description: "Learn vocabulary and pronunciation with family and friends.",
-      icon: <Share2 />,
-    },
-    {
-      title: "Pricing Like No Other",
-      description: "Our prices are the best in the market.",
-      icon: <IconCurrencyDollar />,
-    },
-    {
-      title: "100% Uptime Guarantee",
-      description: "We just cannot be taken down by anyone.",
-      icon: <IconCloud />,
-    },
-    {
-      title: "24/7 Customer Support",
-      description: "We are available 100% of the time. At least our AI agents are.",
-      icon: <IconHelp />,
-    }
-  ];
-  
-  
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 bg-darkestneonblue/80 relative z-10 py-10 max-w-7xl mx-auto">
-      {features.map((feature, index) => (
-        <Feature key={feature.title} {...feature} index={index} />
-      ))}
-    </div>
-  );
-}
 
-const Feature = ({
-  title,
-  description,
-  icon,
-  index,
-}: {
+//Feature types
+interface Feature {
   title: string;
   description: string;
   icon: React.ReactNode;
-  index: number;
-}) => {
+}
+
+//array of feature objects
+const features: Feature[] = [
+  {
+    title: "Powered By AI",
+    description: "Transform your ideas into enchanting stories with our magical AI assistant.",
+    icon: <Wand2 className="h-10 w-10 text-white" />,
+  },
+  {
+    title: "Creative Stories",
+    description: "Creative Stories and different image styles to spark your imagination.",
+    icon: <Brain className="h-10 w-10 text-white" />,
+  },
+  {
+    title: "Quick Creation",
+    description: "Create beautiful stories in seconds, not minutes.",
+    icon: <Clock className="h-10 w-10 text-white" />,
+  },
+  {
+    title: "Story Library",
+    description: "Access a growing collection of user-created stories for inspiration.",
+    icon: <BookOpen className="h-10 w-10 text-white" />,
+  },
+  {
+    title: "Easy Learning",
+    description: "Learn vocabulary and pronunciation with family and friends.",
+    icon: <Share2 className="h-10 w-10 text-white" />,
+  },
+  {
+    title: "Optimal Pricing",
+    description: "Our pricing is unmatched, offering the best value in the market.",
+    icon: <Currency className="h-10 w-10 text-white" />,
+  }
+]
+
+export function LandingFeatures() {
   return (
-    <div
-      className={cn(
-        "flex flex-col lg:border-r  py-10 relative group/feature dark:border-neutral-800",
-        (index === 0 || index === 4) && "lg:border-l dark:border-neutral-800",
-        index < 4 && "lg:border-b dark:border-neutral-800"
-      )}
-    >
-      {index < 4 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
-      )}
-      {index >= 4 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
-      )}
-      <div className="mb-4 relative z-10 px-10 text-black dark:text-neutral-400">
-        {icon}
+    <section className="py-4 lg:py-24 bg-[#000015] mt-24 md:mt-12 text-white mx-auto">
+      <div className="">
+        {/* Features Heading and subheading div*/}
+        <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <div className="space-y-2">
+            <h2 className="text-3xl text-center font-bold tracking-tighter sm:text-5xl">MAGICAL FEATURES</h2>
+            <p className="max-w-[900px] py-4 text-center pytext-white md:text-xl/relaxed font-semibold lg:text-base/relaxed xl:text-xl/relaxed">
+              Discover the enchanting capabilities 
+              of our storytelling platform.
+            </p>
+          </div>
+        </div>
+        {/* Features Card */}
+        <div className="mx-auto grid gap-6 py-6 max-sm:py-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-10 lg:px-20">
+          {features.map((feature, index) => (
+            <Card key={index} className="backdrop-blur-xl bg-gradient-to-b from-black/90 to-pink-400/80 border-2 transition-all hover:border-primary hover:shadow-md py-12 px-4 rounded-2xl">
+              <CardHeader className="flex flex-row items-center justify-between">
+                <div className="text-white">{feature.icon}</div>
+                <CardTitle className="text-white text-2xl font-bold">{feature.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-white text-lg text-center py-4 font-semibold">{feature.description}</CardDescription>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
-      <div className="text-lg font-bold mb-2 relative z-10 px-10">
-        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-neutral-300 dark:bg-neutral-700 group-hover/feature:bg-blue-500 transition-all duration-200 origin-center" />
-        <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-black dark:text-neutral-100">
-          {title}
-        </span>
-      </div>
-      <p className="text-sm text-black dark:text-neutral-300 max-w-xs relative z-10 px-10">
-        {description}
-      </p>
-    </div>
-  );
-};
+    </section>
+    )}
