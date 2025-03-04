@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import { Lobster, Inter } from "next/font/google";
 import "./globals.css";
 import Provider from "./provider";
-import { Header } from "./_components/Header";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadesOfPurple } from "@clerk/themes";
-// import { Background } from "./_components/background";
+
 
 const inter = Inter({
   subsets: ["latin"],
@@ -65,7 +64,9 @@ export default function RootLayout({
       <html lang="en">
         <body className={`${inter.className} ${lobster.variable}`}>
           <Provider>
-            <div>{children}</div>
+            <div>
+            
+              {children}</div>
           </Provider>
         </body>
       </html>

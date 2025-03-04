@@ -12,6 +12,7 @@ import { eq } from 'drizzle-orm';
 import { UserDetailContext } from './_context/UserDetailContext';
 // @ts-ignore
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { Toaster } from 'react-hot-toast';
 
 
 
@@ -63,6 +64,7 @@ function Provider({ children }: { children: React.ReactNode }) {
     <NextUIProvider>
       {children}
       <ToastContainer />
+      <Toaster position="top-center" />
     </NextUIProvider>
     </PayPalScriptProvider>
   </UserDetailContext.Provider>

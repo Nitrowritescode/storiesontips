@@ -27,7 +27,7 @@ export default function LandingHero() {
 
 {/* Create Story Button with Description */}
 <div className="flex justify-center items-center px-8 w-full mx-auto max-sm:mt-4 md:py-4">
-        <Link href="/create-story" passHref>
+        <Link href="/create-story" legacyBehavior passHref>
           <Button className="bg-darkneonblue/80 font-bold px-12 mx-auto">
             <Sparkles className=""/>
             Create Story

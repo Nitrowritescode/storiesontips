@@ -99,7 +99,7 @@ const LandingImageStyle: React.FC<ImageCarouselProps> = ({
 
        <div className="py-4">
 <h2 className="text-center font-passion font-extrabold text-4xl md:text-5xl text-white">IMAGE STYLES</h2>
-   <p className="text-center text-white text-l md:text-xl font-semibold py-4">Explore our diverse range of stunning image styles, crafted to suit every vision</p>
+   <p className="text-center text-white/50 text-l md:text-xl font-medium py-4">Explore our diverse range of stunning image styles, crafted to suit every vision</p>
        </div>
 
       <div 

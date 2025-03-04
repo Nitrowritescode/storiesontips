@@ -51,7 +51,7 @@ export function LandingFeatures() {
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl text-center font-passion font-extrabold tracking-tighter sm:text-5xl">MAGICAL FEATURES</h2>
-            <p className="max-w-[900px] px-8 py-4 text-center pytext-white md:text-xl/relaxed font-semibold lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="max-w-[900px] px-8 py-4 text-center text-white/50 md:text-xl/relaxed font-semibold lg:text-base/relaxed xl:text-xl/relaxed">
               Discover the enchanting capabilities 
               of our storytelling platform.
             </p>

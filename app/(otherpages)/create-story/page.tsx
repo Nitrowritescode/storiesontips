@@ -15,9 +15,10 @@ import CustomLoader from "./_components/CustomLoader";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
-import { toast } from 'react-toastify';
+import toast from "react-hot-toast";
 import { UserDetailContext } from "../../_context/UserDetailContext";
 import { eq } from "drizzle-orm";
+import { Card } from "@/components/ui/card";
 
 
 const CREATE_STORY_PROMPT = process.env.NEXT_PUBLIC_CREATE_STORY_PROMPT;
@@ -158,10 +159,10 @@ const createStory = () => {
   }
 
   return (
-    <div className="min-h-screen bg-fancy">
-      <div className="container mx-auto px-4 py-12 md:py-20">
-        <div className="relative mb-12 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white inline-block">
+    <div className="min-h-screen">
+      <div className="container mx-auto py-12 md:py-20">
+        <div className="relative mb-8 text-center">
+          <h1 className="text-4xl md:text-5xl px-12 font-extrabold text-white inline-block">
             CREATE YOUR STORY
           </h1>
           {/* animation dots to be fixed*/}
@@ -169,31 +170,44 @@ const createStory = () => {
             <div className="absolute -bottom-6 -right-6 w-12 h-12 bg-pink-300 rounded-full opacity-50 animate-pulse"></div> */}
 
         </div>
-        <p className="text-lg text-white text-center mt-4 mb-10 max-w-2xl mx-auto">
+        <p className="text-lg text-white/50 text-center mt-4 mb-10 max-w-2xl px-12 mx-auto">
           Unlock your creativity with AI: Craft stories like never before! Let
           our AI bring your imagination to life, one story at a time.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-14">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-14 p-4 rounded-4xl">
+          {/* Create Story Card Grid  */}
+          <Card className="backdrop-blur-xl bg-gradient-to-b from-black/90 to-pink-400/80 border-2 transition-all hover:border-primary hover:shadow-md py-12 px-4 rounded-2xl">
+            
           <StorySubjectInput userSelection={onHandleUserSelection} />
+          </Card>
+          <Card className="backdrop-blur-xl bg-gradient-to-b from-black/90 to-pink-400/80 border-2 transition-all hover:border-primary hover:shadow-md py-12 px-4 rounded-2xl">
+
           <StoryType userSelection={onHandleUserSelection} />
+          </Card>
+          <Card className="backdrop-blur-xl bg-gradient-to-b from-black/90 to-pink-400/80 border-2 transition-all hover:border-primary hover:shadow-md py-12 px-4 rounded-2xl">
           <AgeGroup userSelection={onHandleUserSelection} />
+
+          </Card>
+          <Card className="backdrop-blur-xl bg-gradient-to-b from-black/90 to-pink-400/80 border-2 transition-all hover:border-primary hover:shadow-md py-12 px-4 rounded-2xl">
+
           <ImageStyle userSelection={onHandleUserSelection} />
+          </Card>
         </div>
         <div className="flex-col flex justify-end my-10 ">
           <Button
-            className="p-6 text-2xl w-full md:w-[80%] mx-auto font-bold bg-white"
+            className="py-6 px-12 text-2xl text-black/80 w-full md:w-[80%] mx-auto capitalize font-bold bg-white"
             disabled={loading}
             onPress={GenerateStory}
           >
             Generate story
           </Button>
-          <span className="text-white mx-auto text-m font-bold">1 coin will be used!</span>
+          <span className="text-white mx-auto text-m font-semibold py-1">1 coin will be used!</span>
         </div>
       </div>
       <CustomLoader isLoading={loading} />
     </div>
 
-  );
+  );  
 };
 
 export default createStory;
