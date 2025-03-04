@@ -17,7 +17,7 @@ export default function LandingHero() {
           <Image src='/landing/heroimagefinal.png' alt='hero section image of an owl' width={500} height={500} className=""/>
         </div>
         {/* framer motion text */}
-        <div className="text-6xl text-center md:text-7xl mx-auto rounded-xl font-normal text-white dark:text-neutral-400 bg-[#000015] font-sans md:py-8 items-center justify-center">
+        <div className="text-4xl text-center md:text-7xl mx-auto rounded-xl font-normal text-white dark:text-neutral-400 bg-[#000015] font-sans md:py-8 items-center justify-center">
           <span className="font-mono text-4xl text-center">MAKE</span>
           <br />
           <FlipWords words={words} className="text-center" /> <br />
