@@ -98,8 +98,8 @@ const LandingImageStyle: React.FC<ImageCarouselProps> = ({
     <div className="w-full px-10 py-16">
 
        <div className="py-4">
-<h2 className="text-center font-bold text-5xl text-white">IMAGE STYLES</h2>
-   <p className="text-center text-white text-xl font-semibold py-4">Explore our diverse range of stunning image styles, crafted to suit every vision</p>
+<h2 className="text-center font-passion font-extrabold text-4xl md:text-5xl text-white">IMAGE STYLES</h2>
+   <p className="text-center text-white text-l md:text-xl font-semibold py-4">Explore our diverse range of stunning image styles, crafted to suit every vision</p>
        </div>
 
       <div 
@@ -125,7 +125,7 @@ const LandingImageStyle: React.FC<ImageCarouselProps> = ({
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-6 text-white">
                   <h3 className="text-3xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-xl text-gray-200 mb-4 max-w-md">{item.description}</p>
+                  <p className="text-l md:text-xl text-gray-200 mb-4 max-w-md">{item.description}</p>
                 </div>
               </div>
             </div>

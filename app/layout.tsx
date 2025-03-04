@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Lobster, Inter } from "next/font/google";
 import "./globals.css";
 import Provider from "./provider";
 import { Header } from "./_components/Header";
@@ -10,6 +10,12 @@ import { shadesOfPurple } from "@clerk/themes";
 const inter = Inter({
   subsets: ["latin"],
   weight: "400",
+});
+
+const lobster = Lobster({
+  subsets: ["latin"],
+  weight: "400", 
+  variable: "--font-lobster",
 });
 
 export const metadata: Metadata = {
@@ -57,7 +63,7 @@ export default function RootLayout({
       afterSignOutUrl="/"
     >
       <html lang="en">
-        <body className={`${inter.className}`}>
+        <body className={`${inter.className} ${lobster.variable}`}>
           <Provider>
             <div>{children}</div>
           </Provider>
