@@ -1,8 +1,8 @@
-import React from "react"
-import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/card";
-import Image from 'next/image'
-import { Button } from "@nextui-org/button";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
+
 
 type StoryItemType = {
     story:{id: number;
@@ -20,28 +20,30 @@ type StoryItemType = {
 
 
 
-export default function StoryItemCard({story}:StoryItemType) {
-    return(
-        <Link href={'/view-story/'+story?.storyId}>
-  <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-5 hover:scale-105 transition-all">
+  export default function StoryItemCard({ story }: StoryItemType) {
+    return (
+      <Link href={`/view-story/${story?.storyId}`} className="block w-full mx-auto">
+        <Card className="w-full mx-auto h-[350px] bg-gradient-to-b from-black/90 to-pink-400/80 col-span-12 sm:col-span-5 hover:scale-105 transition-transform rounded-3xl overflow-hidden shadow-lg">
+          <CardContent className="w-full h-full rounded-3xl px-0 py-4">
+            <Image
+              alt="Story Cover"
+              className="w-full mx-auto h-[200px] object-cover rounded-3xl px-4"
+              src={story?.coverImage}
+              width={500}
+              height={500}
+            />
+           <div className="flex bg-gradient-to-br h-[30%] mt-10 from-black/80 to-black/30 px-4  py-4 gap-2 text-l justify-between items-center">
 
-        <Image
-          alt="Card example background"
-          className="z-0 w-full h-full scale-125 -translate-y-6 object-cover"
-          src={story?.coverImage}
-          width={400}
-          height={400}
-        />
-        <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
-          <div>
-            <p className="text-black text-xl">{story?.output?.bookTitle}</p>
-           
-          </div>
-          <Button className="text-tiny bg-blue-600 font-bold"  radius="full" size="sm">
-            Open
-          </Button>
-        </CardFooter>
-      </Card>
-        </Link>
-    )
-}
+            <p className="text-white/80 max-sm:text-s md:text-l text-left font-medium">
+              {story?.output?.bookTitle}
+            </p>
+
+            <Button className="bg-blue-600 text-white hover:bg-blue-700" size="sm">
+              Open
+            </Button>
+           </div>
+          </CardContent>
+        </Card>
+      </Link>
+    );
+  }

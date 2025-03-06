@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 import {StoryItemType} from '../dashboard/_components/UserStoryList'
 import StoryItemCard from '../dashboard/_components/StoryItemCard';
 import { Button } from '@nextui-org/button';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 
 
 export default function ExploreMore() {
@@ -55,10 +55,10 @@ export default function ExploreMore() {
     };
 
     return (
-        <div className='min-h-screen p-10 md:px-10 lg:px-40 bg-fancy'>
+        <div className='min-h-screen px-4 md:px-8 lg:px-12 bg-fancy'>
             <h2 className='text-4xl font-bold text-center text-white'>Story Library</h2>
             <h3 className='text-l py-2 text-white text-center'>Explore more stories here created by others</h3>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 mt-10'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-10 mt-10'>
                 {storyList.map((item, index) => (
                     <StoryItemCard story={item} key={index} />
                 ))}

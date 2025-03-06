@@ -15,7 +15,7 @@ export default function DashboardHeader() {
     const router = useRouter();
 
     return(
-    <div className='bg-blue-950 text-white p-4 flex justify-between items-center mt-8'>
+    <div className='bg-gradient-to-b from-black/20 to-pink-400/80 text-white p-4 flex justify-between items-center mt-8'>
         <div>
 
         <h2 className='font-bold text-xl lg:text-3xl md:text-2xl'>My Stories</h2>
@@ -28,7 +28,7 @@ export default function DashboardHeader() {
 
         <div className='flex justify center items-center gap-1'>
            <Link href='/buy-credits' passHref>
-            <Button className='bg-blue-600 text-white' type='button' onPress={() => router.push('/buy-credits')}>Buy More Coins</Button>
+            <Button className='bg-blue-600 text-white rounded-lg' type='button' onPress={() => router.push('/buy-credits')}>Buy More Coins</Button>
            </Link>
         </div>
     </div>

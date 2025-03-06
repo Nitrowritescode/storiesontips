@@ -15,7 +15,7 @@ function StorySubjectInput({ userSelection }: any) {
         classNames={{
           input:
           `min-h-[230px] text-2xl p-5 text-white font-medium resize-y max-h-[560px] 
-          !bg-red-800 bg-opacity-90 rounded-3xl`,
+          !bg-gray-800 bg-opacity-90 rounded-3xl`,
         }}
         placeholder="What's on your mind!"
         onChange={(e) =>
