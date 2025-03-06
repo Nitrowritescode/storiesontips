@@ -1,11 +1,17 @@
-import { Button } from "@nextui-org/button";
+"use client"
+
+
 import { FlipWords } from "./FlipWords";
 import Link from "next/link";
 import Image from "next/image";
 import { Sparkles } from "lucide-react";
+import {useRouter} from "next/navigation"
+import { Button } from "@/components/ui/button";
 
 export default function LandingHero() {
   const words = ["Interesting", "Fun", "Educational", "Inspiring"];
+  
+  const router = useRouter()
 
   return (
     <>
