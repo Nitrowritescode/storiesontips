@@ -10,7 +10,7 @@ export default function LandingHero() {
   return (
     <>
       {/* Hero Section */}
-      <div className="py-16 grid grid-cols-1 lg:grid-cols-2 gap-2 px-4 bg-[#000015] mx-auto place-items-center place-content-start">
+      <div className="py-10 grid grid-cols-1 lg:grid-cols-2 gap-2 px-4 bg-[#000015] mx-auto place-items-center place-content-start">
         {/* Owl Hero Section Image */}
         <div className="mx-auto">
           <Image
@@ -22,7 +22,7 @@ export default function LandingHero() {
           />
         </div>
         {/* framer motion text */}
-        <div className="text-4xl text-center md:text-6xl mx-auto rounded-xl font-normal text-white dark:text-neutral-400 bg-[#000015] font-sans md:py-8 items-center justify-center">
+        <div className="text-5xl text-center md:text-6xl mx-auto rounded-xl font-normal text-white dark:text-neutral-400 bg-[#000015] font-sans md:py-8 items-center justify-center">
           <span className="font-passion text-2xl md:text-4xl font-bold text-center">
             MAKE
           </span>
