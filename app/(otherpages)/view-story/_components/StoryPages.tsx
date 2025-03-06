@@ -22,7 +22,7 @@ function StoryPages({storyChapter}:any) {
   }
 
   return (
-    <div>
+    <div className='container'>
       <h2 className='text-xl md:text-2xl lg:text-2xl font-bold text-blue-600 flex justify-between'>{storyChapter?.chapterTitle}
         <div className='flex justify-center'>
 

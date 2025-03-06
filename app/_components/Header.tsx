@@ -29,7 +29,7 @@ export function Header() {
   }
 
   return (
-    <header className="fixed w-full top-0 left-0 z-50 bg-transparent backdrop-blur-md shadow-md">
+    <header className="fixed container top-0 left-0 z-50 bg-transparent backdrop-blur-md shadow-md">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">

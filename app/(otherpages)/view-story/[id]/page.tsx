@@ -72,7 +72,7 @@ function ViewStory({ params }: any) {
         {story.output?.bookTitle}
       </h2>
 
-      <div className="relative mx-auto m-0">
+      <div className="relative mx-auto m-0 pt-12">
         {/* @ts-ignore */}
         <HTMLFlipBook
          width={bookWidth}
