@@ -9,7 +9,7 @@ import {useRouter} from "next/navigation"
 import { Button } from "@/components/ui/button";
 
 export default function LandingHero() {
-  const words = ["Interesting", "Fun", "Educational", "Inspiring"];
+  const words = ["Interesting", "Creative", "Educational", "Inspiring"];
   
   const router = useRouter()
 
