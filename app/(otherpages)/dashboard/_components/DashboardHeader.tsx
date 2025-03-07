@@ -15,7 +15,7 @@ export default function DashboardHeader() {
     const router = useRouter();
 
     return(
-    <div className='bg-pink-400/80 text-white p-4 flex justify-between items-center mt-8'>
+    <div className='bg-pink-400/65 rounded-3xl text-white p-4 flex justify-between items-center mt-8'>
         <div>
 
         <h2 className='font-bold text-xl lg:text-3xl md:text-2xl'>My Stories</h2>
