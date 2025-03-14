@@ -3,8 +3,9 @@
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useContext, useState } from "react";
 import { UserDetailContext } from "@/app/_context/UserDetailContext";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { useRouter } from "next/router";
 
 interface PricingOption {
   id: number;
@@ -30,6 +31,7 @@ const getDescription = (credits: number): string => {
 export default function BuyCredits() {
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
+  const router = useRouter();
 
   const handlePaymentSuccess = async (orderID: string) => {
     if (!selectedOption) return;
@@ -56,6 +58,7 @@ export default function BuyCredits() {
           userEmail: userDetail.userEmail,
           creditsToAdd: OPTIONS[selectedOption - 1].credits,
         }),
+        
       });
 
       const updateData = await updateResponse.json();
@@ -65,12 +68,15 @@ export default function BuyCredits() {
           ...prev,
           credit: prev.credit + OPTIONS[selectedOption - 1].credits,
         }));
+        router.push("/dashboard")
       } else {
         toast.error(updateData.message);
       }
     } catch (error) {
       toast.error("Payment failed. Please try again!");
     }
+
+    
   };
 
   return (
