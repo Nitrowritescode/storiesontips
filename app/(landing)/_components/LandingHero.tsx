@@ -1,57 +1,54 @@
-"use client"
-
-
-import { FlipWords } from "./FlipWords";
 import Link from "next/link";
 import Image from "next/image";
 import { Sparkles } from "lucide-react";
-import {useRouter} from "next/navigation"
 import { Button } from "@/components/ui/button";
 
 export default function LandingHero() {
-  const words = ["Interesting", "Creative", "Educational", "Inspiring"];
-  
-  const router = useRouter()
-
   return (
-    <>
-      {/* Hero Section */}
-      <div className="py-10 grid grid-cols-1 lg:grid-cols-2 gap-2 px-4 bg-[#000015] mx-auto place-items-center place-content-start">
-        {/* Owl Hero Section Image */}
-        <div className="mx-auto">
-          <Image
-            src="/landing/heroimagefinal.png"
-            alt="hero section image of an owl"
-            width={500}
-            height={500}
-            className=""
-          />
-        </div>
-        {/* framer motion text */}
-        <div className="text-5xl text-center md:text-6xl mx-auto rounded-xl font-normal text-white dark:text-neutral-400 bg-[#000015] font-sans md:py-8 items-center justify-center">
-          <span className="font-passion text-2xl md:text-4xl font-bold text-center">
-            MAKE
-          </span>
-          <br />
-          <FlipWords words={words} className="text-center" /> <br />
-          <span className="font-passion font-bold text-2xl md:text-4xl">
-            STORIES WITH
-          </span>
-          <br />
-          <span className="text-neonblue font-bold">StoriesOnTips</span>
-          {/* Create Story Button with Description */}
-          <Link
-            href="/create-story"
-            passHref
-            className="flex justify-center items-center px-8 w-full mx-auto max-sm:mt-4 md:py-4"
-          >
-            <Button className="bg-darkneonblue/80 font-bold px-12 mx-auto">
-              <Sparkles className="" />
-              Create Story
+    <section className="w-full py-28 md:py-32">
+      <div className="container px-4 md:px-6">
+        <div className="flex flex-col items-center text-center space-y-10">
+          <div className="space-y-6 max-w-4xl">
+            <h1 className="text-5xl md:text-7xl font-bold  text-white tracking-tighter">
+              Make Stories For Fun & Education
+            </h1>
+            <p className="text-xl text-white/70 max-w-3xl mx-auto">
+              Create and explore stories that inspire and educate. Join a community of storyreaders and learners today!
+            </p>
+          </div>
+          <div className="flex flex-row gap-2">
+            <Link href='/explore'>
+            <Button className="bg-white text-[#000015] hover:bg-white/60 px-8 py-6 text-base font-semibold">
+              Story Library
             </Button>
-          </Link>
+            </Link>
+            <Link href='/create-story'>
+            <Button
+              variant="outline"
+              className="border-white/20 hover:bg-blue-800 text-white bg-blue-600 px-8 py-6 text-base font-medium"
+              >
+              Create Story
+              <Sparkles className="size-5"/>
+
+            </Button>
+              </Link>
+          </div>
+
+          {/* Dashboard Image Container */}
+          <div className="w-full max-w-4xl mt-16">
+            <div className="relative w-full rounded-lg overflow-hidden shadow-2xl border border-white/10">
+              {/* This is where the dashboard image will go */}
+              <Image
+                src="/landing/heroimagefinal.png"
+                width={800}
+                height={400}
+                alt="hero image of owl"
+                className="w-full"
+              />
+            </div>
+          </div>
         </div>
       </div>
-    </>
+    </section>
   );
 }

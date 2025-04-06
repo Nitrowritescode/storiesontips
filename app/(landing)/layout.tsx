@@ -5,13 +5,11 @@ import LandingFooter from "./_components/LandingFooter";
 function layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <header>
-        <LandingHeader />
-      </header>
+      <LandingHeader />
+
       <main>{children}</main>
-      <footer>
-        <LandingFooter />
-      </footer>
+
+      <LandingFooter />
     </>
   );
 }

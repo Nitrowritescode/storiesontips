@@ -22,33 +22,36 @@ const carouselItems: CarouselItem[] = [
   {
     id: 1,
     title: "Pixel Style",
-    description: "Immerse yourself in the nostalgic charm of retro-inspired pixel art, perfect for a vibrant and classic aesthetic.",
+    description:
+      "Immerse yourself in the nostalgic charm of retro-inspired pixel art, perfect for a vibrant and classic aesthetic.",
     imageUrl: "/landing/imagestyle/pixel2.webp",
-    altText: "Pixel style image"
+    altText: "Pixel style image",
   },
   {
     id: 2,
     title: "Watercolor",
-    description: "Experience the elegance of soft, flowing watercolor strokes, blending colors seamlessly for an artistic touch.",
+    description:
+      "Experience the elegance of soft, flowing watercolor strokes, blending colors seamlessly for an artistic touch.",
     imageUrl: "/landing/imagestyle/watercolor.webp",
-    altText: "Watercolor painting style image"
+    altText: "Watercolor painting style image",
   },
   {
     id: 3,
     title: "Paper Cut",
-    description: "A unique layered paper-cut effect that adds depth and dimension, creating a handcrafted and artistic feel.",
+    description:
+      "A unique layered paper-cut effect that adds depth and dimension, creating a handcrafted and artistic feel.",
     imageUrl: "/landing/imagestyle/papercut.webp",
-    altText: "Paper cutout style image"
+    altText: "Paper cutout style image",
   },
   {
     id: 4,
     title: "3D Cartoon",
-    description: "Lively and playful, this 3D cartoon style brings characters and scenes to life with bold colors and smooth shading.",
+    description:
+      "Lively and playful, this 3D cartoon style brings characters and scenes to life with bold colors and smooth shading.",
     imageUrl: "/landing/imagestyle/3dcartoon.webp",
-    altText: "3D cartoon style image"
-  }
+    altText: "3D cartoon style image",
+  },
 ];
-
 
 interface ImageCarouselProps {
   items?: CarouselItem[];
@@ -59,7 +62,7 @@ interface ImageCarouselProps {
 const LandingImageStyle: React.FC<ImageCarouselProps> = ({
   items = carouselItems,
   autoPlay = true,
-  interval = 5000
+  interval = 5000,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
@@ -69,7 +72,7 @@ const LandingImageStyle: React.FC<ImageCarouselProps> = ({
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? items.length - 1 : prevIndex - 1
     );
   };
@@ -80,13 +83,13 @@ const LandingImageStyle: React.FC<ImageCarouselProps> = ({
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
-    
+
     if (autoPlay && !isHovering) {
       intervalId = setInterval(() => {
         nextSlide();
       }, interval);
     }
-    
+
     return () => {
       if (intervalId) {
         clearInterval(intervalId);
@@ -95,20 +98,24 @@ const LandingImageStyle: React.FC<ImageCarouselProps> = ({
   }, [autoPlay, interval, isHovering, currentIndex]);
 
   return (
-    <div className="w-full px-10 py-16">
+    <div className="w-full py-16">
+      <div className="py-4">
+        <h2 className="text-center font-passion font-extrabold text-4xl md:text-5xl text-white">
+          IMAGE STYLES
+        </h2>
+        <p className="text-center text-white/50 text-l md:text-xl font-medium py-4">
+          Explore our diverse range of stunning image styles, crafted to suit
+          every vision
+        </p>
+      </div>
 
-       <div className="py-4">
-<h2 className="text-center font-passion font-extrabold text-4xl md:text-5xl text-white">IMAGE STYLES</h2>
-   <p className="text-center text-white/50 text-l md:text-xl font-medium py-4">Explore our diverse range of stunning image styles, crafted to suit every vision</p>
-       </div>
-
-      <div 
+      <div
         className="relative w-full overflow-hidden rounded-lg bg-gray-900"
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
         {/* Main carousel */}
-        <div 
+        <div
           className="flex transition-transform duration-500 ease-in-out h-[70vh]"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
@@ -125,7 +132,9 @@ const LandingImageStyle: React.FC<ImageCarouselProps> = ({
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-6 text-white">
                   <h3 className="text-3xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-l md:text-xl text-gray-200 mb-4 max-w-md">{item.description}</p>
+                  <p className="text-l md:text-xl text-gray-200 mb-4 max-w-md">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             </div>
