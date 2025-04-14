@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export default function LandingHero() {
   return (
-    <section className="w-full py-28 md:py-32">
+    <section className="w-full py-20 md:py-24">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center text-center space-y-10">
           <div className="space-y-6 max-w-4xl">

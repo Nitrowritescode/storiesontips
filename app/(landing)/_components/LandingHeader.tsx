@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { DialogTitle } from "@/components/ui/dialog";
+import { LayoutDashboardIcon } from "lucide-react";
 
 const navigationItems = [
   { name: "Home", href: "/" },
@@ -48,9 +49,10 @@ export default function Header() {
             <SignedIn>
               <Link
                 href="/dashboard"
-                className="bg-blue-600 hover:bg-blue-800 text-white px-3 py-2 rounded-xl font-medium"
+                className="bg-blue-600 hover:bg-blue-800 text-white rounded-xl font-medium"
               >
                 <Button className="bg-blue-600 hover:bg-blue-800 text-white rounded-xl font-medium">
+                  <LayoutDashboardIcon className="size-5"/>
                   Dashboard
                 </Button>
               </Link>
@@ -107,7 +109,7 @@ export default function Header() {
                       className=""
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <Button className="bg-blue-600 hover:bg-blue-800 text-white rounded-xl font-semibold">
+                      <Button className="bg-blue-600 hover:bg-blue-800 text-white rounded-xl w-full font-semibold">
                         Dashboard
                       </Button>
                     </Link>
@@ -118,7 +120,7 @@ export default function Header() {
                       className="block"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <Button className="bg-blue-600 hover:bg-blue-800 text-white rounded-xl font-semibold">
+                      <Button className="bg-blue-600 hover:bg-blue-800 w-full text-white rounded-xl font-semibold">
                         Login
                       </Button>
                     </Link>
@@ -127,7 +129,7 @@ export default function Header() {
                       className="block"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <Button className="bg-blue-600 hover:bg-blue-800 text-white rounded-xl font-semibold">
+                      <Button className="bg-blue-600 hover:bg-blue-800 w-full text-white rounded-xl font-semibold">
                         Get Started
                       </Button>
                     </Link>

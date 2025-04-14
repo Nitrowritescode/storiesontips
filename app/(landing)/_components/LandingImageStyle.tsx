@@ -98,12 +98,17 @@ const LandingImageStyle: React.FC<ImageCarouselProps> = ({
   }, [autoPlay, interval, isHovering, currentIndex]);
 
   return (
-    <div className="w-full py-16">
-      <div className="py-4">
-        <h2 className="text-center font-passion font-extrabold text-4xl md:text-5xl text-white">
+    <div className="container mx-auto px-4 pb-20">
+      <div className="mb-12 max-w-3xl mx-auto text-center">
+        <div className="inline-block px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mb-2 mx-auto">
+          <span className="text-sm font-medium tracking-wide text-white">
+            Visual Representation
+          </span>
+        </div>
+        <h2 className="text-center font-bold text-4xl md:text-5xl lg:text-6xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-300 to-blue-500 py-4">
           IMAGE STYLES
         </h2>
-        <p className="text-center text-white/50 text-l md:text-xl font-medium py-4">
+        <p className="text-center text-white/70 text-lg md:text-xl font-medium">
           Explore our diverse range of stunning image styles, crafted to suit
           every vision
         </p>
