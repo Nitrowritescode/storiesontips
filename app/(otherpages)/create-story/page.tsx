@@ -165,10 +165,6 @@ const createStory = () => {
           <h1 className="text-4xl md:text-5xl px-12 font-extrabold text-white inline-block">
             CREATE YOUR STORY
           </h1>
-          {/* animation dots to be fixed*/}
-          {/* <div className="absolute -top-6 -left-6 w-12 h-12 bg-yellow-300 rounded-full opacity-50 animate-pulse"></div>
-            <div className="absolute -bottom-6 -right-6 w-12 h-12 bg-pink-300 rounded-full opacity-50 animate-pulse"></div> */}
-
         </div>
         <p className="text-lg text-white/50 text-center mt-4 mb-10 max-w-2xl px-12 mx-auto">
           Unlock your creativity with AI: Craft stories like never before! Let
