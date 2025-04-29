@@ -1,11 +1,11 @@
 import React from "react";
 import LandingFooter from "../_components/Footer";
-import LandingHeader from "../(landing)/_components/LandingHeader";
+import Header from "../(landing)/_components/LandingHeader";
 
 function MainLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="bg-[#000015]">
-      <LandingHeader />
+      <Header />
       <main className="container mx-auto px-4 pt-24">{children}</main>
       <LandingFooter />
     </div>
