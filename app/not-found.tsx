@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import { Header } from "./_components/Header"
+import Header  from "./_components/Header"
 
 
 export const metadata: Metadata = {   

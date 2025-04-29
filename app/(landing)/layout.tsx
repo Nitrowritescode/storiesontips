@@ -1,14 +1,12 @@
 import React from "react";
-import Header from "./_components/LandingHeader";
 import LandingFooter from "./_components/LandingFooter";
+import LandingHeader from "./_components/LandingHeader";
 
 function layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Header />
-
+      <LandingHeader />
       <main>{children}</main>
-
       <LandingFooter />
     </>
   );
