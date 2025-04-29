@@ -4,7 +4,7 @@ import "./globals.css";
 import Provider from "./provider";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadesOfPurple } from "@clerk/themes";
-
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -13,7 +13,7 @@ const inter = Inter({
 
 const lobster = Lobster({
   subsets: ["latin"],
-  weight: "400", 
+  weight: "400",
   variable: "--font-lobster",
 });
 
@@ -64,9 +64,8 @@ export default function RootLayout({
       <html lang="en">
         <body className={`${inter.className} ${lobster.variable}`}>
           <Provider>
-            <div>
-            
-              {children}</div>
+            <div>{children}</div>
+            <Toaster />
           </Provider>
         </body>
       </html>

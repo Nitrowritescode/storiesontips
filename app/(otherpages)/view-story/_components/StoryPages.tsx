@@ -23,14 +23,19 @@ function StoryPages({storyChapter}:any) {
 
   return (
     <div className='container'>
-      <h2 className='text-xl md:text-2xl lg:text-2xl font-bold text-blue-600 flex justify-between'>{storyChapter?.chapterTitle}
-        <div className='flex justify-center'>
+      <div className='bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-gray-900 dark:to-slate-900 p-4'>
 
-        <span className='text-3xl cursor-pointer flex-right text-gray-800' onClick={()=>playSpeech(storyChapter?.storyText)}><MdSmartDisplay /></span>
-        <span className='text-3xl cursor-pointer text-gray-800' onClick={()=>stopSpeech()}><ImStop2 /></span>
+      <h2 className='text-xl md:text-xl lg:text-2xl font-bold text-white/80 flex justify-between'>{storyChapter?.chapterTitle}
+        <div className='flex justify-center'>
+        <span className='text-3xl cursor-pointer flex-right text-indigo-900' onClick={()=>playSpeech(storyChapter?.storyText)}><MdSmartDisplay className='size-7'/></span>
+        <span className='text-3xl cursor-pointer text-indigo-900' onClick={()=>stopSpeech()}><ImStop2 className='size-7'/></span>
         </div>
       </h2>
-      <p className='text-l md:text-l p-2 mt-3 rounded-lg bg-slate-100'>{storyChapter?.storyText}</p>
+      </div>
+      {/* story text */}
+      <div className='px-4'>
+      <p className='text-l md:text-l lg:text-lg p-2 mt-3 rounded-lg bg-slate-800'>{storyChapter?.storyText}</p>
+      </div>
     </div>
   )
 }
