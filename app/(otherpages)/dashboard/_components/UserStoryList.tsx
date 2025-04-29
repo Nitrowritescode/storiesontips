@@ -60,7 +60,7 @@ export default function UserStoryList() {
     return (
         <div>
             {/* @ts-ignore */}
-      { storyList && storyList.length > 0 ? (<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-10 mt-10 rounded-2xl mx-auto'>
+      { storyList && storyList.length > 0 ? (<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-10 mt-10 rounded-2xl mx-auto pb-8'>
                 {/* @ts-ignore */}
                 {storyList && storyList.map((item: StoryItemType, index: number) => (
                     <StoryItemCard story={item} key={index}/>

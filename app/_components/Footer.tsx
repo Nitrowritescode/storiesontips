@@ -1,54 +1,123 @@
-import React from "react";
+import type React from "react";
 import Link from "next/link";
-import { FaInstagram } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa6";
+import { Button } from "@/components/ui/button";
+import { FaYoutube } from "react-icons/fa";
+import Image from "next/image";
 
-function Footer() {
+const LandingFooter: React.FC = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-gray-900 text-white py-16 max-sm:py-12  border-t border-gray-700 mx-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col max-sm:space-y-8 md:flex-row justify-between items-left md:items-center text-left md:text-center lg:px-24 px-4">
-            <p className="">
-              &copy; {new Date().getFullYear()} StoriesOnTips.
-              <br />
-              All rights reserved.
+    <footer className="bg-gradient-to-b from-[#000015] to-[#050530] text-white py-16 border-t border-gray-800">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 place-items-left max-lg:gap-8 lg:place-items-center mb-12">
+          {/* Company Info */}
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+              StoriesOnTips
+            </h3>
+            <p className="text-white/70 max-w-xs">
+              Transforming ideas into enchanting stories with our magical AI
+              assistant. Create personalized, engaging, and age-appropriate
+              stories in seconds.
             </p>
-            <div className="">
-              <h1 className="font-semibold capitalize text-white text-l lg:text-xl py-2">
-                Quick Links
-              </h1>
-              <div className="flex flex-col space-y-2">
-                <Link href="/create-story" className="hover:text-gray-400">
-                  Create Story
-                </Link>
-                <Link href="/explore" className="hover:text-gray-400">
-                  Story Library
-                </Link>
-  
-                <Link href="/buy-credits" className="hover:text-gray-400">
-                  Buy Coins
-                </Link>
-              </div>
-            </div>
-            <div className="flex flex-col space-y-2">
-              <h1 className="font-semibold capitalize text-white text-l lg:text-xl py-2">
-                Follow Us
-              </h1>
-              <div className="flex space-x-4 justify-start items-start">
-                <a
-                  href="https://www.youtube.com/@storiesontips"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white max-sm:text-left flex gap-2 mb-10 hover:text-gray-300"
-                >
-                  <FaYoutube size={24} /> Youtube
-                </a>
-              </div>
+            <div className="flex space-x-4 pt-2">
+              <a
+                href="https://www.youtube.com/@storiesontips"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+                className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition-colors"
+              >
+                <FaYoutube size={18} />
+              </a>
             </div>
           </div>
-        </div>
-      </footer>
-  );
-}
 
-export default Footer;
+          {/* Quick Links */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold">Quick Links</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link
+                  href="/create-story"
+                  className="text-white/70 hover:text-white transition-colors flex items-center"
+                >
+                  <span className="bg-white/10 w-1.5 h-1.5 rounded-full mr-2"></span>
+                  Create Story
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/explore"
+                  className="text-white/70 hover:text-white transition-colors flex items-center"
+                >
+                  <span className="bg-white/10 w-1.5 h-1.5 rounded-full mr-2"></span>
+                  Story Library
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/buy-credits"
+                  className="text-white/70 hover:text-white transition-colors flex items-center"
+                >
+                  <span className="bg-white/10 w-1.5 h-1.5 rounded-full mr-2"></span>
+                  Buy Coins
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/"
+                  className="text-white/70 hover:text-white transition-colors flex items-center"
+                >
+                  <span className="bg-white/10 w-1.5 h-1.5 rounded-full mr-2"></span>
+                  Home
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div className="space-y-4 max-lg:hidden">
+            <Image
+              src="/landing/heroimagefinal.png"
+              alt="footer logo image"
+              width={250}
+              height={250}
+            />
+          </div>
+        
+        </div>
+
+        {/* Bottom section */}
+        <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-white/70 text-sm">
+            &copy; {currentYear} StoriesOnTips. All rights reserved.
+          </p>
+          <div className="flex space-x-6 mt-4 md:mt-0">
+            <Link
+              href="/terms"
+              className="text-white/70 text-sm hover:text-white transition-colors"
+            >
+              Terms of Service
+            </Link>
+            <Link
+              href="/privacy"
+              className="text-white/70 text-sm hover:text-white transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/cookies"
+              className="text-white/70 text-sm hover:text-white transition-colors"
+            >
+              Cookie Policy
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default LandingFooter;
