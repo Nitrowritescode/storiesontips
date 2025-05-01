@@ -129,7 +129,7 @@ export default function Header() {
                       className="block"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <Button className="bg-blue-600 hover:bg-blue-800 w-full text-white rounded-xl font-semibold">
+                      <Button className="bg-indigo-600 hover:bg-indigo-800 w-full text-white rounded-xl font-semibold">
                         Get Started
                       </Button>
                     </Link>
