@@ -10,7 +10,7 @@ const LandingFooter: React.FC = () => {
   return (
     <footer className="bg-gradient-to-b from-[#000015] to-[#050530] text-white py-16 border-t border-gray-800">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 place-items-left max-lg:gap-8 lg:place-items-center mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 place-items-left max-lg:gap-8 md:place-items-center mb-12">
           {/* Company Info */}
           <div className="space-y-4">
             <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
@@ -78,7 +78,7 @@ const LandingFooter: React.FC = () => {
           </div>
 
           {/* Newsletter */}
-          <div className="space-y-4 max-lg:hidden">
+          <div className="space-y-4 max-md:hidden">
             <Image
               src="/landing/heroimagefinal.png"
               alt="footer logo image"

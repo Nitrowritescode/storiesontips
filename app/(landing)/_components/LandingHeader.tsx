@@ -49,9 +49,9 @@ export default function Header() {
             <SignedIn>
               <Link
                 href="/dashboard"
-                className="bg-blue-600 hover:bg-blue-800 text-white rounded-xl font-medium"
+                className="bg-indigo-600 hover:bg-indigo-800 text-white rounded-xl font-medium"
               >
-                <Button className="bg-blue-600 hover:bg-blue-800 text-white rounded-xl font-medium">
+                <Button className="bg-indigo-600 hover:bg-indigo-800 text-white rounded-xl font-medium">
                   <LayoutDashboardIcon className="size-5"/>
                   Dashboard
                 </Button>
@@ -60,12 +60,12 @@ export default function Header() {
             </SignedIn>
             <SignedOut>
               <Link href="/sign-in" className="">
-                <Button className="bg-blue-600 hover:bg-blue-800 text-white rounded-xl font-medium">
+                <Button className="bg-indigo-600 hover:bg-indigo-800 text-white rounded-xl font-medium">
                   Login
                 </Button>
               </Link>
               <Link href="/sign-up" className="">
-                <Button className="bg-blue-600 hover:bg-blue-800 text-white rounded-xl font-medium">
+                <Button className="bg-indigo-600 hover:bg-indigo-800 text-white rounded-xl font-medium">
                   Get Started
                 </Button>
               </Link>
@@ -109,7 +109,7 @@ export default function Header() {
                       className=""
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <Button className="bg-blue-600 hover:bg-blue-800 text-white rounded-xl w-full font-semibold">
+                      <Button className="bg-indigo-600 hover:bg-indigo-800 text-white rounded-xl w-full font-semibold">
                         Dashboard
                       </Button>
                     </Link>
@@ -120,7 +120,7 @@ export default function Header() {
                       className="block"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <Button className="bg-blue-600 hover:bg-blue-800 w-full text-white rounded-xl font-semibold">
+                      <Button className="bg-indigo-600 hover:bg-indigo-800 w-full text-white rounded-xl font-semibold">
                         Login
                       </Button>
                     </Link>
