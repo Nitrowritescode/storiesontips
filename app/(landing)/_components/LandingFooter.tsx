@@ -1,118 +1,115 @@
 import type React from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { FaYoutube } from "react-icons/fa";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 
 const LandingFooter: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-b from-[#000015] to-[#050530] text-white py-16 border-t border-gray-800">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 place-items-left max-lg:gap-8 md:place-items-center mb-12">
-          {/* Company Info */}
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
-              StoriesOnTips
-            </h3>
-            <p className="text-white/70 max-w-xs">
-              Transforming ideas into enchanting stories with our magical AI
-              assistant. Create personalized, engaging, and age-appropriate
-              stories in seconds.
-            </p>
-            <div className="flex space-x-4 pt-2">
-              <a
-                href="https://www.youtube.com/@storiesontips"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="YouTube"
-                className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition-colors"
-              >
-                <FaYoutube size={18} />
-              </a>
+    <footer className="relative bg-black border-t border-white/10 overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-gradient-to-t from-blue-950/20 via-black to-black"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Main Footer Content */}
+        <div className="py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+            {/* Company Info */}
+            <div className="space-y-6">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
+                  <span className="text-white font-bold">S</span>
+                </div>
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                  StoriesOnTips
+                </h3>
+              </div>
+              
+              <p className="text-white/60 max-w-sm leading-relaxed">
+                Transforming ideas into enchanting stories with our magical AI assistant. 
+                Create personalized, engaging, and age-appropriate stories in seconds.
+              </p>
+              
+              <div className="flex items-center space-x-4">
+                <a
+                  href="https://www.youtube.com/@storiesontips"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                  className="group flex items-center justify-center w-12 h-12 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl transition-all duration-300"
+                >
+                  <FaYoutube size={20} className="text-white/70 group-hover:text-red-500 transition-colors" />
+                </a>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div className="space-y-6">
+              <h3 className="text-xl font-bold text-white">Quick Links</h3>
+              <ul className="space-y-4">
+                {[
+                  { name: "Create Story", href: "/create-story" },
+                  { name: "Story Library", href: "/explore" },
+                  { name: "Buy Coins", href: "/buy-credits" },
+                  { name: "Home", href: "/" },
+                ].map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="group flex items-center text-white/60 hover:text-white transition-colors duration-200"
+                    >
+                      <div className="w-1.5 h-1.5 bg-white/30 rounded-full mr-3 group-hover:bg-blue-400 transition-colors"></div>
+                      <span>{link.name}</span>
+                      <ArrowUpRight size={14} className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Image Section */}
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-3xl scale-110"></div>
+                <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm p-4">
+                  <Image
+                    src="/landing/heroimagefinal.png"
+                    alt="Footer brand image"
+                    width={250}
+                    height={250}
+                    className="rounded-xl"
+                  />
+                </div>
+              </div>
             </div>
           </div>
-
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold">Quick Links</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/create-story"
-                  className="text-white/70 hover:text-white transition-colors flex items-center"
-                >
-                  <span className="bg-white/10 w-1.5 h-1.5 rounded-full mr-2"></span>
-                  Create Story
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/explore"
-                  className="text-white/70 hover:text-white transition-colors flex items-center"
-                >
-                  <span className="bg-white/10 w-1.5 h-1.5 rounded-full mr-2"></span>
-                  Story Library
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/buy-credits"
-                  className="text-white/70 hover:text-white transition-colors flex items-center"
-                >
-                  <span className="bg-white/10 w-1.5 h-1.5 rounded-full mr-2"></span>
-                  Buy Coins
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/"
-                  className="text-white/70 hover:text-white transition-colors flex items-center"
-                >
-                  <span className="bg-white/10 w-1.5 h-1.5 rounded-full mr-2"></span>
-                  Home
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div className="space-y-4 max-md:hidden">
-            <Image
-              src="/landing/heroimagefinal.png"
-              alt="footer logo image"
-              width={250}
-              height={250}
-            />
-          </div>
-        
         </div>
 
-        {/* Bottom section */}
-        <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-white/70 text-sm">
-            &copy; {currentYear} StoriesOnTips. All rights reserved.
-          </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link
-              href="/terms"
-              className="text-white/70 text-sm hover:text-white transition-colors"
-            >
-              Terms of Service
-            </Link>
-            <Link
-              href="/privacy"
-              className="text-white/70 text-sm hover:text-white transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/cookies"
-              className="text-white/70 text-sm hover:text-white transition-colors"
-            >
-              Cookie Policy
-            </Link>
+        {/* Bottom Section */}
+        <div className="py-8 border-t border-white/10">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <p className="text-white/60 text-sm">
+              &copy; {currentYear} StoriesOnTips. All rights reserved.
+            </p>
+            
+            <div className="flex items-center space-x-8">
+              {[
+                { name: "Terms of Service", href: "/terms" },
+                { name: "Privacy Policy", href: "/privacy" },
+                { name: "Cookie Policy", href: "/cookies" },
+              ].map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-white/60 hover:text-white text-sm transition-colors duration-200"
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>

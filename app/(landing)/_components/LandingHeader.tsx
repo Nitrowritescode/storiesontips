@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { DialogTitle } from "@/components/ui/dialog";
-import { LayoutDashboardIcon } from "lucide-react";
+import { LayoutDashboardIcon, Menu, X } from "lucide-react";
 
 const navigationItems = [
   { name: "Home", href: "/" },
@@ -18,9 +18,17 @@ const navigationItems = [
 export default function Header() {
   const [isClient, setIsClient] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
+    
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   if (!isClient) {
@@ -28,112 +36,118 @@ export default function Header() {
   }
 
   return (
-    <header className="fixed w-full top-0 left-0 z-50 bg-transparent backdrop-blur-md shadow-md">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${
+      scrolled 
+        ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' 
+        : 'bg-transparent backdrop-blur-sm'
+    }`}>
+      <nav className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-white font-bold text-xl">
-            StoriesOnTips
+          {/* Logo */}
+          <Link href="/" className="text-white font-bold text-xl flex items-center space-x-2">
+            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-sm">S</span>
+            </div>
+            <span>StoriesOnTips</span>
           </Link>
-          <div className="hidden md:flex space-x-6">
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
             {navigationItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-white hover:text-blue-400 transition"
+                className="text-white/70 hover:text-white transition-colors duration-200 text-sm font-medium"
               >
                 {item.name}
               </Link>
             ))}
           </div>
+
+          {/* Desktop Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <SignedIn>
-              <Link
-                href="/dashboard"
-                className="bg-indigo-600 hover:bg-indigo-800 text-white rounded-xl font-medium"
-              >
-                <Button className="bg-indigo-600 hover:bg-indigo-800 text-white rounded-xl font-medium">
-                  <LayoutDashboardIcon className="size-5"/>
+              <Link href="/dashboard">
+                <Button className="bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-full px-4 py-2 text-sm font-medium transition-all duration-200">
+                  <LayoutDashboardIcon className="w-4 h-4 mr-2"/>
                   Dashboard
                 </Button>
               </Link>
-              <UserButton afterSignOutUrl="/" />
+              <div className="border border-white/20 rounded-full p-1">
+                <UserButton afterSignOutUrl="/" />
+              </div>
             </SignedIn>
             <SignedOut>
-              <Link href="/sign-in" className="">
-                <Button className="bg-indigo-600 hover:bg-indigo-800 text-white rounded-xl font-medium">
+              <Link href="/sign-in">
+                <Button variant="ghost" className="text-white hover:bg-white/10 rounded-full px-4 py-2 text-sm font-medium">
                   Login
                 </Button>
               </Link>
-              <Link href="/sign-up" className="">
-                <Button className="bg-indigo-600 hover:bg-indigo-800 text-white rounded-xl font-medium">
+              <Link href="/sign-up">
+                <Button className="bg-white text-black hover:bg-white/90 rounded-full px-6 py-2 text-sm font-medium transition-all duration-200">
                   Get Started
                 </Button>
               </Link>
             </SignedOut>
           </div>
-          <div className="md:hidden flex items-center space-x-2">
+
+          {/* Mobile Menu */}
+          <div className="md:hidden flex items-center space-x-3">
             <SignedIn>
-              <UserButton afterSignOutUrl="/" />
+              <div className="border border-white/20 rounded-full p-1">
+                <UserButton afterSignOutUrl="/" />
+              </div>
             </SignedIn>
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild>
                 <Button
                   variant="ghost"
-                  className="text-white border-none font-bold focus:outline-none"
+                  className="text-white p-2"
                   onClick={() => setIsMenuOpen(true)}
                 >
-                  {isMenuOpen ? "✖" : "☰"}
+                  {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
                 </Button>
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="bg-black/40 bg-opacity-80 px-4 py-8 space-y-4 backdrop-blur-md"
+                className="bg-black/95 backdrop-blur-xl border-l border-white/10 px-6 py-8"
               >
                 <DialogTitle className="sr-only">
                   Mobile Navigation Menu
                 </DialogTitle>
-                <nav className="flex flex-col space-y-3">
+                <nav className="flex flex-col space-y-6 mt-8">
                   {navigationItems.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="block text-white text-lg text-center"
+                      className="text-white text-lg font-medium hover:text-blue-400 transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.name}
                     </Link>
                   ))}
-                  <SignedIn>
-                    <Link
-                      href="/dashboard"
-                      className=""
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      <Button className="bg-indigo-600 hover:bg-indigo-800 text-white rounded-xl w-full font-semibold">
-                        Dashboard
-                      </Button>
-                    </Link>
-                  </SignedIn>
-                  <SignedOut>
-                    <Link
-                      href="/sign-in"
-                      className="block"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      <Button className="bg-indigo-600 hover:bg-indigo-800 w-full text-white rounded-xl font-semibold">
-                        Login
-                      </Button>
-                    </Link>
-                    <Link
-                      href="/sign-up"
-                      className="block"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      <Button className="bg-indigo-600 hover:bg-indigo-800 w-full text-white rounded-xl font-semibold">
-                        Get Started
-                      </Button>
-                    </Link>
-                  </SignedOut>
+                  <div className="pt-6 border-t border-white/10 space-y-4">
+                    <SignedIn>
+                      <Link href="/dashboard" onClick={() => setIsMenuOpen(false)}>
+                        <Button className="bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-full w-full font-medium">
+                          <LayoutDashboardIcon className="w-4 h-4 mr-2"/>
+                          Dashboard
+                        </Button>
+                      </Link>
+                    </SignedIn>
+                    <SignedOut>
+                      <Link href="/sign-in" onClick={() => setIsMenuOpen(false)}>
+                        <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 rounded-full w-full font-medium">
+                          Login
+                        </Button>
+                      </Link>
+                      <Link href="/sign-up" onClick={() => setIsMenuOpen(false)}>
+                        <Button className="bg-white text-black hover:bg-white/90 rounded-full w-full font-medium">
+                          Get Started
+                        </Button>
+                      </Link>
+                    </SignedOut>
+                  </div>
                 </nav>
               </SheetContent>
             </Sheet>
