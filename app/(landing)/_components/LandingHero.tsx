@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 
 export default function LandingHero() {
   return (
-    <section className="w-full min-h-screen flex items-center justify-center bg-black relative overflow-hidden pt-24">
+    <section className="w-full min-h-screen flex items-center justify-center bg-black relative overflow-hidden py-24 ">
       {/* Background gradient effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-950/20 via-black to-purple-950/20"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-950/20 via-black to-black"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
 
       <div className="container px-4 md:px-6 relative z-10">
@@ -38,16 +38,31 @@ export default function LandingHero() {
             </p>
           </div>
 
-          {/* CTA Button */}
-          <div className="pt-4">
-            <Link href="/explore">
-              <Button
-                size="lg"
-                className="bg-white text-black hover:bg-white/90 px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-2xl"
-              >
-                Get Started for free
-              </Button>
-            </Link>
+          {/* CTA BUTTONS */}
+          <div className="flex justify-center items-center gap-4">
+            <div className="">
+              <Link href="/explore">
+                <Button
+                  size="lg"
+                  className="bg-white text-black hover:bg-white/90 px-8 py-5 text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-2xl"
+                >
+                  Get Started for free
+                </Button>
+              </Link>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/create-story">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-white/20 hover:bg-white/10 text-white bg-transparent px-8 py-5 text-lg font-semibold rounded-full transition-all duration-300 hover:border-white/40"
+                >
+                  Create Story
+                  <Sparkles className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
+            </div>
           </div>
 
           {/* Dashboard Preview */}
@@ -72,7 +87,7 @@ export default function LandingHero() {
               {/* Main dashboard content */}
               <div className="relative">
                 <Image
-                  src="/landing/heroimagefinal.png"
+                  src="/landing/landing-hero-dashboard.webp"
                   width={1200}
                   height={600}
                   alt="Story creation dashboard preview"
@@ -86,18 +101,6 @@ export default function LandingHero() {
           </div>
 
           {/* Secondary CTA */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-8">
-            <Link href="/create-story">
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-white/20 hover:bg-white/10 text-white bg-transparent px-8 py-4 text-lg font-medium rounded-full transition-all duration-300 hover:border-white/40"
-              >
-                Create Story
-                <Sparkles className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-          </div>
         </div>
       </div>
 

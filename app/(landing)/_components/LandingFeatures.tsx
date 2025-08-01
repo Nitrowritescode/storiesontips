@@ -1,121 +1,105 @@
-import type React from "react"
-import Image from "next/image"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Wand2, Brain, Clock, BookOpen, Share2, CircleDollarSign } from "lucide-react"
+import React from "react";
+import { Wand2, Palette, BookOpen, Zap, Users, Download } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
-// Feature types
 interface Feature {
-  id: number
-  title: string
-  description: string
-  icon: React.ReactNode
-  url: string
+  icon: React.ReactNode;
+  title: string;
+  description: string;
 }
 
-// Array of feature objects
-const features: Feature[] = [
-  {
-    id: 1,
-    title: "Powered By AI",
-    description:
-      "Transform your ideas into enchanting stories with our magical AI assistant.",
-    icon: <Wand2 className="h-10 w-10 text-indigo-500" />,
-    url: "/landing/features/feature1.jpg",
-  },
-  {
-    id: 2,
-    title: "Creative Stories",
-    description:
-      "Enjoy a collection of creative stories in various genres, from fairytales to adventures, sci-fi, and moral tales.",
-    icon: <Brain className="h-10 w-10 text-purple-500" />,
-    url: "/landing/features/feature2.webp",
-  },
-  {
-    id: 3,
-    title: "Quick Creation",
-    description: "No more waiting around—our platform allows you to create an entire story within seconds.",
-    icon: <Clock className="h-10 w-10 text-cyan-500" />,
-    url: "/landing/features/feature3.webp",
-  },
-  {
-    id: 4,
-    title: "Story Library",
-    description: "Browse a rich and ever-growing library of stories created by other users and our AI.",
-    icon: <BookOpen className="h-10 w-10 text-violet-500" />,
-    url: "/landing/features/feature4.webp",
-  },
-  {
-    id: 5,
-    title: "Easy Learning For Kids",
-    description:
-      "Make learning fun and interactive for your children. Our stories are designed to teach vocabulary, sentence structure, and pronunciation naturally.",
-    icon: <Share2 className="h-10 w-10 text-blue-500" />,
-    url: "/landing/features/feature5.webp",
-  },
-  {
-    id: 6,
-    title: "Optimal Pricing",
-    description:
-      "We believe in quality storytelling at an affordable price. Our subscription plans offer flexible options that cater to individual users and families alike.",
-    icon: <CircleDollarSign className="h-10 w-10 text-emerald-500" />,
-    url: "/landing/features/feature6.jpg",
-  },
-]
+const FeaturesSection: React.FC = () => {
+  const features: Feature[] = [
+    {
+      icon: <Wand2 className="w-8 h-8" />,
+      title: "AI-Powered Creation",
+      description:
+        "Generate stunning stories with advanced AI technology that understands your creative vision and brings it to life.",
+    },
+    {
+      icon: <Palette className="w-8 h-8" />,
+      title: "Multiple Art Styles",
+      description:
+        "Choose from pixel art, watercolor, paper cut, 3D cartoon, and many more artistic styles for your stories.",
+    },
+    {
+      icon: <BookOpen className="w-8 h-8" />,
+      title: "Interactive Storytelling",
+      description:
+        "Create engaging, interactive narratives that captivate readers and provide immersive experiences.",
+    },
+    {
+      icon: <Zap className="w-8 h-8" />,
+      title: "Lightning Fast",
+      description:
+        "Generate complete stories in seconds with our optimized AI engine and real-time rendering capabilities.",
+    },
+    {
+      icon: <Users className="w-8 h-8" />,
+      title: "Collaborative Editing",
+      description:
+        "Work together with team members, share ideas, and create stories collaboratively in real-time.",
+    },
+    {
+      icon: <Download className="w-8 h-8" />,
+      title: "Export Anywhere",
+      description:
+        "Download your stories in multiple formats including PDF, EPUB, or share directly to social media.",
+    },
+  ];
 
-export function LandingFeatures(): React.JSX.Element {
   return (
-    <section className="py-16 lg:py-24 mt-24 md:mt-12 text-white">
-      <div className="container px-4 mx-auto max-w-7xl">
-        <div className="flex flex-col items-center justify-center space-y-6 text-center mb-12">
-          <div className="space-y-4">
-            <div className="inline-block px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mb-2">
-              <span className="text-sm font-medium tracking-wide text-white">Discover Our Magic</span>
-            </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-300 to-blue-500">
-              MAGICAL FEATURES
-            </h2>
-            <p className="max-w-[800px] mx-auto text-lg text-white/70 md:text-xl/relaxed">
-              Discover the enchanting capabilities of our storytelling platform.
-            </p>
+    <section className="w-full bg-black py-20">
+      <div className="container mx-auto px-4 md:px-6">
+        {/* Section Header */}
+        <div className="mb-16 max-w-3xl mx-auto text-center">
+          <div className="inline-flex items-center px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-6">
+            <span className="text-sm text-white/80 font-medium">
+              ✨ Powerful Features
+            </span>
           </div>
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tighter leading-none mb-6">
+            Everything You Need to{" "}
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+              Create Stories
+            </span>
+          </h2>
+          <p className="text-xl md:text-2xl text-white/60 leading-relaxed font-light">
+            Comprehensive tools and features built with
+            <br />
+            <span className="text-white/80">
+              storytelling, creativity, and innovation in mind.
+            </span>
+          </p>
         </div>
 
         {/* Features Grid */}
-        <div className="grid gap-8 md:gap-10 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
             <Card
-              key={feature.id}
-              className="overflow-hidden border-0 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group"
+              key={index}
+              className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group"
             >
-              <div className="relative h-48 overflow-hidden">
-                <Image
-                  src={feature.url || "/placeholder.svg"}
-                  alt={feature.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105 text-white"
-                  priority={feature.id <= 3}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-              </div>
-
-              <CardHeader className="relative z-10 -mt-10 pt-0">
-                <div className="flex items-center gap-4 mb-2">
-                  <div className="p-3 rounded-full bg-white shadow-lg">{feature.icon}</div>
-                  <CardTitle className="text-xl font-bold text-white mt-12">{feature.title}</CardTitle>
+              <CardContent className="p-8">
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500/20 to-purple-600/20 border border-white/10 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <div className="text-blue-400">{feature.icon}</div>
                 </div>
-              </CardHeader>
-
-              <CardContent>
-                <CardDescription className="text-base text-white/80 leading-relaxed">
+                <h3 className="text-xl font-bold text-white mb-4">
+                  {feature.title}
+                </h3>
+                <p className="text-white/70 leading-relaxed">
                   {feature.description}
-                </CardDescription>
+                </p>
               </CardContent>
             </Card>
           ))}
         </div>
 
+        {/* Empty div for your grid section */}
+        <div className="mt-20">{/* Add your grid section here */}</div>
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default FeaturesSection;

@@ -22,13 +22,13 @@ export default function Header() {
 
   useEffect(() => {
     setIsClient(true);
-    
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   if (!isClient) {
@@ -36,18 +36,20 @@ export default function Header() {
   }
 
   return (
-    <header className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' 
-        : 'bg-transparent backdrop-blur-sm'
-    }`}>
+    <header
+      className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-black/80 backdrop-blur-xl border-b border-white/10"
+          : "bg-transparent backdrop-blur-sm"
+      }`}
+    >
       <nav className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="text-white font-bold text-xl flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">S</span>
-            </div>
+          <Link
+            href="/"
+            className="text-white font-bold text-xl flex items-center space-x-2"
+          >
             <span>StoriesOnTips</span>
           </Link>
 
@@ -69,7 +71,7 @@ export default function Header() {
             <SignedIn>
               <Link href="/dashboard">
                 <Button className="bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-full px-4 py-2 text-sm font-medium transition-all duration-200">
-                  <LayoutDashboardIcon className="w-4 h-4 mr-2"/>
+                  <LayoutDashboardIcon className="w-4 h-4 mr-2" />
                   Dashboard
                 </Button>
               </Link>
@@ -79,7 +81,10 @@ export default function Header() {
             </SignedIn>
             <SignedOut>
               <Link href="/sign-in">
-                <Button variant="ghost" className="text-white hover:bg-white/10 rounded-full px-4 py-2 text-sm font-medium">
+                <Button
+                  variant="ghost"
+                  className="text-white hover:bg-white/10 rounded-full px-4 py-2 text-sm font-medium"
+                >
                   Login
                 </Button>
               </Link>
@@ -128,20 +133,32 @@ export default function Header() {
                   ))}
                   <div className="pt-6 border-t border-white/10 space-y-4">
                     <SignedIn>
-                      <Link href="/dashboard" onClick={() => setIsMenuOpen(false)}>
+                      <Link
+                        href="/dashboard"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
                         <Button className="bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-full w-full font-medium">
-                          <LayoutDashboardIcon className="w-4 h-4 mr-2"/>
+                          <LayoutDashboardIcon className="w-4 h-4 mr-2" />
                           Dashboard
                         </Button>
                       </Link>
                     </SignedIn>
                     <SignedOut>
-                      <Link href="/sign-in" onClick={() => setIsMenuOpen(false)}>
-                        <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 rounded-full w-full font-medium">
+                      <Link
+                        href="/sign-in"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <Button
+                          variant="outline"
+                          className="border-white/20 text-white hover:bg-white/10 rounded-full w-full font-medium"
+                        >
                           Login
                         </Button>
                       </Link>
-                      <Link href="/sign-up" onClick={() => setIsMenuOpen(false)}>
+                      <Link
+                        href="/sign-up"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
                         <Button className="bg-white text-black hover:bg-white/90 rounded-full w-full font-medium">
                           Get Started
                         </Button>

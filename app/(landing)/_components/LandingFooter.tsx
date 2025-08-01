@@ -12,7 +12,7 @@ const LandingFooter: React.FC = () => {
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-t from-blue-950/20 via-black to-black"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.1),transparent_50%)]"></div>
-      
+
       <div className="container mx-auto px-6 relative z-10">
         {/* Main Footer Content */}
         <div className="py-20">
@@ -20,19 +20,17 @@ const LandingFooter: React.FC = () => {
             {/* Company Info */}
             <div className="space-y-6">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
-                  <span className="text-white font-bold">S</span>
-                </div>
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                   StoriesOnTips
                 </h3>
               </div>
-              
+
               <p className="text-white/60 max-w-sm leading-relaxed">
-                Transforming ideas into enchanting stories with our magical AI assistant. 
-                Create personalized, engaging, and age-appropriate stories in seconds.
+                Transforming ideas into enchanting stories with our magical AI
+                assistant. Create personalized, engaging, and age-appropriate
+                stories in seconds.
               </p>
-              
+
               <div className="flex items-center space-x-4">
                 <a
                   href="https://www.youtube.com/@storiesontips"
@@ -41,7 +39,10 @@ const LandingFooter: React.FC = () => {
                   aria-label="YouTube"
                   className="group flex items-center justify-center w-12 h-12 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl transition-all duration-300"
                 >
-                  <FaYoutube size={20} className="text-white/70 group-hover:text-red-500 transition-colors" />
+                  <FaYoutube
+                    size={20}
+                    className="text-white/70 group-hover:text-red-500 transition-colors"
+                  />
                 </a>
               </div>
             </div>
@@ -63,7 +64,10 @@ const LandingFooter: React.FC = () => {
                     >
                       <div className="w-1.5 h-1.5 bg-white/30 rounded-full mr-3 group-hover:bg-blue-400 transition-colors"></div>
                       <span>{link.name}</span>
-                      <ArrowUpRight size={14} className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ArrowUpRight
+                        size={14}
+                        className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                      />
                     </Link>
                   </li>
                 ))}
@@ -94,7 +98,7 @@ const LandingFooter: React.FC = () => {
             <p className="text-white/60 text-sm">
               &copy; {currentYear} StoriesOnTips. All rights reserved.
             </p>
-            
+
             <div className="flex items-center space-x-8">
               {[
                 { name: "Terms of Service", href: "/terms" },
