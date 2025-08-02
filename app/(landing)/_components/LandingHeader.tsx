@@ -83,7 +83,7 @@ export default function Header() {
               <Link href="/sign-in">
                 <Button
                   variant="ghost"
-                  className="text-white hover:bg-white/10 rounded-full px-4 py-2 text-sm font-medium"
+                  className="text-white hover:bg-white/80 rounded-full px-4 py-2 text-sm font-medium"
                 >
                   Login
                 </Button>
@@ -150,7 +150,7 @@ export default function Header() {
                       >
                         <Button
                           variant="outline"
-                          className="border-white/20 text-white hover:bg-white/10 rounded-full w-full font-medium"
+                          className="border-white/20 text-black hover:bg-white/10 rounded-full w-full font-medium"
                         >
                           Login
                         </Button>
@@ -159,7 +159,7 @@ export default function Header() {
                         href="/sign-up"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <Button className="bg-white text-black hover:bg-white/90 rounded-full w-full font-medium">
+                        <Button className="bg-white mt-4 text-black hover:bg-white/90 rounded-full w-full font-medium">
                           Get Started
                         </Button>
                       </Link>

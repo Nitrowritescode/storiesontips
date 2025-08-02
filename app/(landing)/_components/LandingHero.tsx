@@ -30,21 +30,21 @@ export default function LandingHero() {
             </h1>
 
             <p className="text-xl md:text-2xl text-white/60  mx-auto leading-relaxed font-light">
-              Beautifully designed, animated components and templates built with
+              Create personalized stories while learning languages
               <br />
               <span className="text-white/80">
-                storytelling, creativity, and Framer Motion.
+                where AI storytelling meets accelerated language acquisition
               </span>
             </p>
           </div>
 
           {/* CTA BUTTONS */}
-          <div className="flex justify-center items-center gap-4">
+          <div className="flex flex-col sm:mt-4 lg:mt-0 lg:flex-row justify-center items-center gap-4">
             <div className="">
               <Link href="/explore">
                 <Button
                   size="lg"
-                  className="bg-white text-black hover:bg-white/90 px-8 py-5 text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-2xl"
+                  className="bg-white text-black hover:bg-white/90 p-6 text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-2xl"
                 >
                   Get Started for free
                 </Button>
@@ -56,7 +56,7 @@ export default function LandingHero() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-white/20 hover:bg-white/10 text-white bg-transparent px-8 py-5 text-lg font-semibold rounded-full transition-all duration-300 hover:border-white/40"
+                  className="border-white/20 hover:bg-white/10 text-white bg-transparent p-6 text-lg font-semibold rounded-full transition-all duration-300 hover:border-white/40"
                 >
                   Create Story
                   <Sparkles className="ml-2 w-5 h-5" />
