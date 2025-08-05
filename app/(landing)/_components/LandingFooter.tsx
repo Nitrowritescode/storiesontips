@@ -20,9 +20,7 @@ const LandingFooter: React.FC = () => {
             {/* Company Info */}
             <div className="space-y-6">
               <div className="flex items-center space-x-3">
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  StoriesOnTips
-                </h3>
+                <h3>StoriesOnTips</h3>
               </div>
 
               <p className="text-white/60 max-w-sm leading-relaxed">
