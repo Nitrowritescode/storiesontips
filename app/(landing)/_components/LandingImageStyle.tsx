@@ -57,10 +57,7 @@ const LandingImageStyle: React.FC<ImageStyleProps> = ({
             </span>
           </div>
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tighter leading-none mb-6">
-            Explore our diverse range of{" "}
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              stunning image styles,
-            </span>
+            Explore our diverse range of <span>stunning image styles</span>
           </h2>
           <p className="text-xl md:text-2xl text-white/60 leading-relaxed font-light">
             crafted to suit every vision

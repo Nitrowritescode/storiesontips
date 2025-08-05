@@ -23,10 +23,7 @@ export default function LandingHero() {
           {/* Main heading */}
           <div className="space-y-6">
             <h1 className="text-6xl md:text-8xl lg:text-8xl font-bold text-white tracking-tighter leading-none">
-              Make Stories For{" "}
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-                Fun & Education
-              </span>
+              Make Stories For <span>Fun & Education</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-white/60  mx-auto leading-relaxed font-light">

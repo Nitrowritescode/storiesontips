@@ -59,10 +59,7 @@ const FeaturesSection: React.FC = () => {
             </span>
           </div>
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tighter leading-none mb-6">
-            Everything You Need to{" "}
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              Create Stories
-            </span>
+            Everything You Need to <span>Create Stories</span>
           </h2>
           <p className="text-xl md:text-2xl text-white/60 leading-relaxed font-light">
             Comprehensive tools and features built with
